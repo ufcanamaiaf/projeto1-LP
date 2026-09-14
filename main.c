@@ -15,22 +15,23 @@ int turno(){
 void luta(){
 
 }
-typedef struct agente(){
-    int vida = 20;
-    int dano = 2;
+
+typedef struct Agente{
+    int vida;
+    int dano;
     // int def = 4;
-}
+}Agente;
 
-typedef struct arma(){
-    int dano = 3;
-}
+typedef struct Arma{
+    char* nome;
+    int dano;
+}Arma;
 
-typedef struct zumbi de sangue() {
-    int dano = 4;
-    int vida = 18;
+typedef struct zumbiDeSangue{
+    int dano;
+    int vida;
     // int def = 0;
-
-}
+}zumbiDeSangue;
 
 void delay(int seconds){
     sleep(seconds);
@@ -58,11 +59,11 @@ int main(){
     while(decisao1 != 6){
 
     printf("1- Ver arma\n");
-    printf("2- Ver rádio\n");
-    printf("3- Ver símbolo da ordem\n");
+    printf("2- Ver radio\n");
+    printf("3- Ver simbolo da ordem\n");
     printf("4- Ver fotografia\n");
     printf("5- Ver lanterna\n");
-    printf("6- Proxima ação\n");
+    printf("6- Proxima acao\n");
 
     printf("\nEscolha: ");
     scanf("%d", &decisao1);

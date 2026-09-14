@@ -58,7 +58,7 @@ int main(){
 
     // INICIO DAS DECISOES: VER ITENS
 
-    int decisao1;
+    int decisao1 = 0;
 
     while(decisao1 != 6){
 
@@ -145,127 +145,197 @@ int main(){
     printf("Voce se lembra bem disso: e agora que a sua missao comeca.\n");
     delay(2);
 
-    int decisao2;
+    int decisao2 = 0;
+    while ((decisao2 < 1 || decisao2 > 3)){
+        printf("1- Abandonar a floresta\n");
+        printf("2- Analisar o perimetro\n");
+        printf("3- Entrar na casa\n");
 
-    printf("1- Abandonar a floresta\n");
-    printf("2- Analisar o perimetro\n");
-    printf("3- Entrar na casa\n");
-
-    printf("\nEscolha: ");
-    scanf("%d", &decisao2);
-
-    if(decisao2 == 1){
-        // ABANDONAR A FLORESTA
-        printf("\nVoce decide ignorar a casa e seguir pela floresta.\n");
-        printf("Talvez continuar andando seja a melhor maneira de encontrar uma saida.\n\n");
-        delay(2);
-
-        printf("Voce caminha por alguns minutos, depois por horas.\n");
-        printf("As arvores parecem ficar cada vez mais densas, e a luz do sol desaparece entre as copas.\n\n");
-        delay(2);
-
-        printf("Depois de algum tempo, algo chama sua atencao.\n");
-        printf("Aquela arvore... voce ja passou por ela antes.\n\n");
-        delay(2);
-
-        printf("Voce continua andando, mas a sensacao permanece.\n");
-        printf("Nao importa qual caminho escolha, a floresta parece sempre leva-lo para o mesmo lugar.\n\n");
-        delay(2);
-
-        printf("Apos mais algum tempo, voce percebe marcas escuras nos troncos das arvores.\n");
-        printf("Ao se aproximar, percebe que sao marcas de sangue.\n\n");
-        delay(2);
-
-        printf("Poucos metros adiante, ha uma mochila abandonada no chao.\n");
-        printf("Pela aparencia, ela parece pertencer a equipe que esteve aqui antes de voce.\n\n");
-        delay(2);
-
-        printf("Dentro da mochila, voce encontra alguns documentos e registros.\n");
-        printf("Um deles chama sua atencao.\n\n");
-        delay(2);
-
-        printf("\"A entidade nao esta presa na casa.\"\n\n");
-        delay(2);
-
-        printf("Voce mal consegue terminar de ler.\n");
-        printf("Um barulho vem de dentro da floresta...\n\n");
-
-        delay(5);
-
-        printf("Galhos quebram. Folhas se movimentam.\n");
-        printf("Voce se vira lentamente na direcao do som.\n\n");
-        delay(2);
-
-        printf("Uma criatura coberta de sangue surge entre as arvores. Voce ja lutou com algo parecido...\n");
-        printf("Um Zumbi de Sangue.\n");
-        printf("Ela permanece parada por alguns segundos, olhando diretamente para voce.\n\n");
-        delay(4);
-
-        printf("Essa e a sua primeira batalha...\n\n");
-        delay(2);
-
-        printf("%s\n", imprimirTracos());
-
-        int decisao2a;
-
-        // 1.1: LUTAR OU FUGIR
-        printf("1- Lutar\n");
-        printf("2- Fugir\n");
         printf("\nEscolha: ");
+        scanf("%d", &decisao2);
 
-        scanf("%d", &decisao2a);
-
-        if(decisao2a == 1){
-            // LUTAR COM O ZUMBI 
-            printf("Voce luta e vence");
+        if(decisao2 == 1){
+            // ABANDONAR A FLORESTA
+            printf("\nVoce decide ignorar a casa e seguir pela floresta.\n");
+            printf("Talvez continuar andando seja a melhor maneira de encontrar uma saida.\n\n");
             delay(2);
 
-            printf("%s\n", imprimirTracos());
-
-        } else if(decisao2a == 2){
-            // FUGIR E MORRER
-            printf("Desesperado e com medo, voce faz de tudo para fugir da criatura\n");
-            printf("Voce tenta retornar a casa, mas a floresta fica cada vez mais sufocante.\n\n");
-
+            printf("Voce caminha por alguns minutos, depois por horas.\n");
+            printf("As arvores parecem ficar cada vez mais densas, e a luz do sol desaparece entre as copas.\n\n");
             delay(2);
 
-            printf("E tarde demais, voce deixou tudo para tras. Sua casa, sua familia, e voce sabe o que vai acontecer.\n");
-            printf("Voce vai morrer aqui\n\n");
-            delay(3);
+            printf("Depois de algum tempo, algo chama sua atencao.\n");
+            printf("Aquela arvore... voce ja passou por ela antes.\n\n");
+            delay(2);
 
-            printf("O seu radio comeca a transmitir uma voz angelical, doce e sutil\n");
-            printf("E uma crianca, e ela te diz:\n");
+            printf("Voce continua andando, mas a sensacao permanece.\n");
+            printf("Nao importa qual caminho escolha, a floresta parece sempre leva-lo para o mesmo lugar.\n\n");
+            delay(2);
 
+            printf("Apos mais algum tempo, voce percebe marcas escuras nos troncos das arvores.\n");
+            printf("Ao se aproximar, percebe que sao marcas de sangue.\n\n");
+            delay(2);
+
+            printf("Poucos metros adiante, ha uma mochila abandonada no chao.\n");
+            printf("Pela aparencia, ela parece pertencer a equipe que esteve aqui antes de voce.\n\n");
+            delay(2);
+
+            printf("Dentro da mochila, voce encontra alguns documentos e registros.\n");
+            printf("Um deles chama sua atencao.\n\n");
+            delay(2);
+
+            printf("\"A entidade nao esta presa na casa.\"\n\n");
+            delay(2);
+
+            printf("Voce mal consegue terminar de ler.\n");
+            printf("Um barulho vem de dentro da floresta...\n\n");
+
+            delay(5);
+
+            printf("Galhos quebram. Folhas se movimentam.\n");
+            printf("Voce se vira lentamente na direcao do som.\n\n");
+            delay(2);
+
+            printf("Uma criatura coberta de sangue surge entre as arvores. Voce ja lutou com algo parecido...\n");
+            printf("Um Zumbi de Sangue.\n");
+            printf("Ela permanece parada por alguns segundos, olhando diretamente para voce.\n\n");
             delay(4);
-            printf("- Voce nao deveria ter vindo.\n\n");
+
+            printf("Essa e a sua primeira batalha...\n\n");
             delay(2);
-
-            printf("As arvores voltam a mexer violentamente atras de voce, voce percebe que nao esta mais sozinho. \n");
-            printf("Assim como voce percebeu que o caminho que escolheu no inicio acabou de leva-lo a morte.\n\n");
-            delay(5);
-
-            printf("O Zumbi de Sangue te alcanca.\n\n");
-            delay(2);
-
-            printf("Voce esta morto, agente.");
 
             printf("%s\n", imprimirTracos());
 
-            delay(5);
-        } else {
-            printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
-        }
+            int decisao2a = 0;
 
-    } else if(decisao2 == 2){
+            // 1.1: LUTAR OU FUGIR
+            while (decisao2a < 1 || decisao2a > 2){
+                printf("1- Lutar\n");
+            printf("2- Fugir\n");
+            printf("\nEscolha: ");
 
-        // ANALISAR O PERIMETRO
+            scanf("%d", &decisao2a);
 
-    } else if(decisao2 == 3){
+            if(decisao2a == 1){
+                // LUTAR COM O ZUMBI 
+                printf("Voce luta e vence");
+                delay(2);
+                decisao2 = 3;
 
+                printf("%s\n", imprimirTracos());
+
+            } else if(decisao2a == 2){
+                // FUGIR E MORRER
+                printf("Desesperado e com medo, voce faz de tudo para fugir da criatura\n");
+                printf("Voce tenta retornar a casa, mas a floresta fica cada vez mais sufocante.\n\n");
+
+                delay(2);
+
+                printf("E tarde demais, voce deixou tudo para tras. Sua casa, sua familia, e voce sabe o que vai acontecer.\n");
+                printf("Voce vai morrer aqui\n\n");
+                delay(3);
+
+                printf("O seu radio comeca a transmitir uma voz angelical, doce e sutil\n");
+                printf("E uma crianca, e ela te diz:\n");
+
+                delay(4);
+                printf("- Voce nao deveria ter vindo.\n\n");
+                delay(2);
+
+                printf("As arvores voltam a mexer violentamente atras de voce, voce percebe que nao esta mais sozinho. \n");
+                printf("Assim como voce percebeu que o caminho que escolheu no inicio acabou de leva-lo a morte.\n\n");
+                delay(5);
+
+                printf("O Zumbi de Sangue te alcanca.\n\n");
+                delay(2);
+
+                printf("Voce esta morto, agente.");
+
+                printf("%s\n", imprimirTracos());
+
+                delay(5);
+            } else {
+                printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
+            }
+
+        } else if(decisao2 == 2){
+            // ANALISAR O PERIMETRO
+            printf("Ao olhar ao redor da casa voce percebe marcas no chao, simbolos estranhos gravados nas arvores, restos de velas, e...\n");
+			printf("pequenas pegadas, provavelmente de uma crianca;\n");
+			printf("Voce segue andando em direcao ao que parece ser os fundos da casa, la ha uma porta e perto dela uma janela quebrada.\n\n");
+			
+			printf("Perto da janela tem uma caixa velha de madeira enterrada ate a metade.\n");
+			printf("Ao abri-la voce acha um medalhao e um papel manchado.\n");
+			printf("Voce pega o medalhao primeiro, nele ha uma foto de uma garota pequena e na parte de tras esta gravado \"Livia - 8 anos\"\n");
+			printf("Voce solta o medalhao e pega o papel, nele esta escrito \"Ela nao nasceu assim\", as letras fundas no papel manchado.\n");
+			
+			printf("%s\n", imprimirTracos());
+            }
+			
+			int decisao2b;
+			
+			while (decisao2b < 1 || decisao2b > 4) {
+				
+				printf("\nQual sera seu proximo passo?\n");
+				printf("1- Entrar pela porta da frente\n");
+				printf("2- Entrar pela porta dos fundos\n");
+				printf("3- Continuar investigando os arredores da casa\n");
+				printf("4- Ir embora\n");
+			
+				printf("\nEscolha: ");
+	    		scanf("%d", &decisao2b);
+	    	
+	    		if (decisao2b == 1){
+				//ENTRAR PELA PORTA DA FRENTE	
+	    			decisao2 = 3;
+	    			break;
+	    			
+				} else if (decisao2b == 2){
+				//ENTRAR PELA PORTA DOS FUNDOS	
+					printf("Voce entra pela porta dos fundos. Perto da porta, encontra marcas de sangue seco no chao e um pedaco de tecido preso em uma lasca da madeira.\n");
+					printf("Ao pega-lo, percebe que e parte do uniforme de um agente da Ordem.\n");
+					printf("Junto do tecido ha um pequeno bilhete: \"Nao confie no que ela parece ser.\". Voce guarda o bilhete e continua andando pela casa.\n");
+					
+					decisao2 = 3;
+					break;
+					
+				} else if (decisao2b == 3){
+				//CONTINUAR INVESTIGANDO
+					printf("Ao se distanciar um pouco da casa, voce ve uma arvore seca, o que parece estranho comparado a grande mata verde e densa da floresta.\n");
+					printf("Voce caminha ate a arvore seca, chegando mais perto voce percebe que ha marcas estranhas entalhadas na arvore, iguais as que tem perto da casa.\n");
+					printf("Perto da arvore tem uma pequena mesa de madeira, ela parece estar la ha bastante tempo, esta velha e com a madeira rachada, em cima dela ha algumas velas velhas, alguns pedacos de vidro e uma velha fotografia.\n");
+					printf("Na fotografia, tem a menina da foto anterior, Livia, ela aparece sorridente ao lado de um homem e uma mulher bem parecidos com ela, seus pais.\n");
+					printf("Atras da foto esta escrito: \"O ritual comecou na noite em que Livia se foi\".");
+					printf("Voce volta para a casa e decide entrar nela.\n\n");
+				
+					printf("%s\n", imprimirTracos());
+				
+					decisao2 = 3;
+					break;
+						
+				} else if (decisao2b == 4){
+				//IR EMBORA
+					printf("Você tenta sair da floresta, começa a correr, mas o radio irrompe o silencio.\n");
+					printf("... \"Voce sabe o que aconteceu aqui. Nao pode simplesmente ir embora.\" ...\n");
+					printf("Mesmo assim, voce continuar correndo e tentando achar uma saída, mas depois de algum tempo percebe que sempre retorna para o mesmo lugar: em frente a casa abandonada.\n");
+					printf("Juntando toda a sua coragem, voce decide entao entrar na casa.\n");
+					
+					printf("%s\n", imprimirTracos());
+					
+					decisao2 = 3;
+					break;
+					
+				} else {
+					printf("Decisao invalida! Escolha um valor entre 1 e 4\n");
+				}
+			} 
+		}else {
+        printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");	
+		}
+    }
+
+    if(decisao2 == 3){
         // ENTRAR NA CASA
-
-    } else {
-        printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");
     }
 
     return 0;

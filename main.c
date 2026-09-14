@@ -1,5 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<unistd.h>
+#include<time.h>
+
+void delay(int seconds){
+    sleep(seconds);
+}
+/*nessa função, para colocar um intervalo de tempo entre um texto e outro, como por exemplo 1 segundo, precisa escrever 'delay(1)'
+e para 2 segundos seria 'delay(2)' */
+
+void luta(){
+
+}
 
 char* imprimirTracos(){
     char* tracos = "\n----------------------------------------------------------------------\n";
@@ -17,7 +29,7 @@ int main(){
 
     printf("%s\n", imprimirTracos());
 
-    // INÍCIO DAS DECISÕES: VER ITENS 
+    // INÍCIO DAS DECISÕES: VER ITENS
     int decisao1;
     while(decisao1 != 6){
 
@@ -38,16 +50,18 @@ int main(){
         printf("Mesmo sob a pouca luz, ela parece bem conservada e transmite uma sensacao de confianca.\n\n");
 
         printf("%s\n", imprimirTracos());
+        delay(4);
 
     } else if(decisao1 == 2){
         // ver radio
         printf("\nVoce encontrou um radio antigo.\n");
         printf("Apesar de estar bastante desgastado, ele ainda parece funcionar.\n");
-        printf("Ao tentar sintoniza-lo, voce escuta uma voz distante...\n\n"); 
+        printf("Ao tentar sintoniza-lo, voce escuta uma voz distante...\n\n");
         printf("- Agente... se estiver ouvindo isso, nao entre na casa.\nVoce entendeu?\nNAO ENTRE NA-\n");
         printf("O radio corta, e voce nao ouve mais nada.");
-        
+
         printf("%s\n", imprimirTracos());
+        delay(7);
 
     } else if(decisao1 == 3){
         // ver simbolo
@@ -56,6 +70,7 @@ int main(){
         printf("Voce nao reconhece o simbolo, mas sente que ele pode estar relacionado ao lugar.\n\n");
 
         printf("%s\n", imprimirTracos());
+        delay(5);
 
     } else if(decisao1 == 4){
         // ver fotografia
@@ -66,6 +81,7 @@ int main(){
         printf("\"Nao deixe que ela saia...\"\n\n");
 
         printf("%s\n", imprimirTracos());
+        delay(8);
 
     } else if(decisao1 == 5){
         // ver lanterna
@@ -74,6 +90,7 @@ int main(){
         printf("Talvez ela seja util para explorar as partes mais escuras da floresta.\n\n");
 
         printf("%s\n", imprimirTracos());
+        delay(5);
 
 
     } else if(decisao1 == 6){
@@ -81,6 +98,7 @@ int main(){
         printf("%s\n", imprimirTracos());
     } else {
         printf("\nOpcao invalida. Escolha um valor entre 1 e 6.\n\n");
+        delay(3);
     }
 }
 

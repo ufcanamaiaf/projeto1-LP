@@ -9,7 +9,7 @@ void d6(){
     int res;
 }
 
-int turno(){
+/*int turno(){
 }
 
 void luta(){
@@ -31,7 +31,7 @@ typedef struct zumbiDeSangue{
     int dano;
     int vida;
     // int def = 0;
-}zumbiDeSangue;
+}zumbiDeSangue;*/
 
 void delay(int seconds){
     sleep(seconds);

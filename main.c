@@ -3,34 +3,39 @@
 #include<unistd.h>
 #include<time.h>
 
-/*
 void d6(){
     srand(time(NULL));
     int d6 = (rand() % 6) + 1;
     int res;
 }
 
+int turno(){
+}
+
 void luta(){
 
-
+}
 typedef struct agente(){
     int vida = 20;
+    int dano = 2;
+    // int def = 4;
 }
 
 typedef struct arma(){
-    char* nome = "glock";
     int dano = 3;
 }
 
 typedef struct zumbi de sangue() {
-    int dano;
+    int dano = 4;
+    int vida = 18;
+    // int def = 0;
 
-}}
-*/
+}
 
 void delay(int seconds){
     sleep(seconds);
 }
+//nessa função, para colocar um intervalo de tempo em segundos entre a execução de um texto/função e outro, como por exemplo 1 segundo, precisa escrever 'delay(1)'
 
 char* imprimirTracos(){
     char* tracos = "\n----------------------------------------------------------------------\n";

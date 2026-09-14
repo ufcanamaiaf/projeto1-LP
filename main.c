@@ -9,29 +9,6 @@ void d6(){
     int res;
 }
 
-int turno(){
-}
-
-void luta(){
-
-}
-typedef struct agente(){
-    int vida = 20;
-    int dano = 2;
-    // int def = 4;
-}
-
-typedef struct arma(){
-    int dano = 3;
-}
-
-typedef struct zumbi de sangue() {
-    int dano = 4;
-    int vida = 18;
-    // int def = 0;
-
-}
-
 void delay(int seconds){
     sleep(seconds);
 }

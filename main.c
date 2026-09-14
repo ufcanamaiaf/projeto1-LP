@@ -8,30 +8,29 @@ void d6(){
     int d6 = (rand() % 6) + 1;
     int res;
 }
-
-/*int turno(){
+/*
+int turno(){
 }
 
 void luta(){
 
 }
-
-typedef struct Agente{
-    int vida;
-    int dano;
+typedef struct agente(){
+    int vida = 20;
+    int dano = 2;
     // int def = 4;
-}Agente;
+}
 
-typedef struct Arma{
-    char* nome;
-    int dano;
-}Arma;
+typedef struct arma(){
+    int dano = 3;
+}
 
-typedef struct zumbiDeSangue{
-    int dano;
-    int vida;
+typedef struct zumbi de sangue() {
+    int dano = 4;
+    int vida = 18;
     // int def = 0;
-}zumbiDeSangue;*/
+
+}*/
 
 void delay(int seconds){
     sleep(seconds);

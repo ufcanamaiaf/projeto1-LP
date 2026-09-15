@@ -316,9 +316,9 @@ int main(){
 						
 				} else if (decisao2b == 4){
 				//IR EMBORA
-					printf("Você tenta sair da floresta, começa a correr, mas o radio irrompe o silencio.\n");
+					printf("Voce tenta sair da floresta, comeca a correr, mas o radio irrompe o silencio.\n");
 					printf("... \"Voce sabe o que aconteceu aqui. Nao pode simplesmente ir embora.\" ...\n");
-					printf("Mesmo assim, voce continuar correndo e tentando achar uma saída, mas depois de algum tempo percebe que sempre retorna para o mesmo lugar: em frente a casa abandonada.\n");
+					printf("Mesmo assim, voce continuar correndo e tentando achar uma saida, mas depois de algum tempo percebe que sempre retorna para o mesmo lugar: em frente a casa abandonada.\n");
 					printf("Juntando toda a sua coragem, voce decide entao entrar na casa.\n");
 					
 					printf("%s\n", imprimirTracos());
@@ -371,9 +371,11 @@ int main(){
         		printf("\"Voce veio terminar o trabalho deles?\"\n");
         		printf("Ela olha para o seu simbolo da Ordem no uniforme. Voce nao entende o que ela quer dizer.\n");
         		printf("Voce pergunta: \"Quem sao eles?\"\n");
-        		printf("Livia responde apontando para o corredor:\n");
+        		printf("Livia responde:\n");
         		printf("\"Os homens que vieram antes de voce, eles tambem fizeram perguntas.\"\n");
-        		printf("Voce percebe marcas de sangue espalhadas pelo chao.\n");
+        		printf("\"Eles estavam procurando meu pai...\"\n");
+        		printf("Voce pergunta: \"Onde ele esta?\"\n");
+        		printf("Ela aponta para o porao.\n");
         		
         		break;
         	
@@ -436,7 +438,6 @@ int main(){
 			}else{
 				
 				printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");
-				
 				
 			}
 		}

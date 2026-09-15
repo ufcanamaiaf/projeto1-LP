@@ -330,8 +330,9 @@ int main(){
 					printf("Decisao invalida! Escolha um valor entre 1 e 4\n");
 				}
 			}
-		}
-		else {
+		} else if (decisao2 == 3){
+			break;
+		}else {
         printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");	
 		}
     }
@@ -346,12 +347,12 @@ int main(){
         printf("Logo depois, escuta uma forte batida!\n");
         printf("Um silencio ensurdecedor toma conta da casa...\n");
         printf("Entao uma voz diz:...\n");
-        printf("Voce demorou.\n");
+        printf("\"Voce demorou.\"\n");
         printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n");
         
-        int decisao3 = 0
+        int decisao3 = 0;
         
-        while (decisao3 < 1 || decisao2 > 3 ){
+        while (decisao3 < 1 || decisao3 > 3 ){
         	
         	printf("1- Perguntar quem ela e.\n");
         	printf("2- Tentar fugir.\n");
@@ -364,16 +365,78 @@ int main(){
         		//PERGUNTAR QUEM ELA E
         		
         		printf("Voce pergunta qual e o nome da garota.\n");
-        		printf("O meu nome e Livia\n")
+        		printf("Ela responde:\n");
+        		printf("\"O meu nome e Livia.\"\n");
+        		printf("A menina permanece parada. Depois de alguns segundos, pergunta:\n");
+        		printf("\"Voce veio terminar o trabalho deles?\"\n");
+        		printf("Ela olha para o seu simbolo da Ordem no uniforme. Voce nao entende o que ela quer dizer.\n");
+        		printf("Voce pergunta: \"Quem sao eles?\"\n");
+        		printf("Livia responde apontando para o corredor:\n");
+        		printf("\"Os homens que vieram antes de voce, eles tambem fizeram perguntas.\"\n");
+        		printf("Voce percebe marcas de sangue espalhadas pelo chao.\n");
+        		
+        		break;
         	
 			} else if(decisao3 == 2){
-				//
+				//TENTAR FUGIR
+				
+				printf("Voce desce rapidamente as escadas. A porta da frente esta aberta. \n");
+				printf("Voce corre!\n");
+				printf("Porem, ao atravessa-la, acaba entrando novamente na casa pela porta dos fundos.\n");
+				printf("Voce esta preso.\n");
+				printf("A garota aparece por tras e fala:\n");
+				printf("\"Por favor nao va!\"\n");
+				printf("Ela corre e voce vai atras dela.\n");
+				
+				break;
 			
 			}else if(decisao3 == 3){
+				//APONTAR A ARMA PARA ELA
+				
+				printf("Voce aponta a arma para a garota.\n");
+				printf("Ela olha para a arma, mas nao demonstra medo.\n");
+				printf("E fala: \"foi isso que eles disseram para voce fazer?\"\n");
+				printf("Voce precisa decidir.\n");
+				
+				int decisao3a = 0;
+        
+        		while (decisao3a < 1 || decisao3a > 2 ){
+        	
+        			printf("1- Disparar a arma.\n");
+        			printf("2- Abaixar a arma.\n");
+        	
+        			printf("\nEscolha: ");
+        			scanf("%d", &decisao3a);
+        	
+        			if(decisao3a == 1){
+        				//DISPARAR A ARMA
+        				
+        				printf("Voce dispara a arma!\n");
+        				printf("A garota desaparece e a casa comeca a tremer. Voce percebe que o tiro nao atingiu ela. \n");
+        				printf("Entao, escuta um barulho vindo do porao.");
+        				
+        				break;
+        				
+					} else if (decisao3a == 2){
+						//ABAIXAR A ARMA
+						
+						printf("Voce abaixa a arma.\n");
+						printf("A garota desaparece pelo corredor.\n");
+						
+						break;
+						
+					}else{
+				
+						printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
+					}
+				}
+					
+				break;
 				
 			}else{
 				
 				printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");
+				
 				
 			}
 		}

@@ -257,8 +257,10 @@ int main(){
             } else {
                 printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
             }
+            }
+        }
 
-        } else if(decisao2 == 2){
+        else if(decisao2 == 2){
             // ANALISAR O PERIMETRO
             printf("Ao olhar ao redor da casa voce percebe marcas no chao, simbolos estranhos gravados nas arvores, restos de velas, e...\n");
 			printf("pequenas pegadas, provavelmente de uma crianca;\n");
@@ -270,7 +272,6 @@ int main(){
 			printf("Voce solta o medalhao e pega o papel, nele esta escrito \"Ela nao nasceu assim\", as letras fundas no papel manchado.\n");
 			
 			printf("%s\n", imprimirTracos());
-            }
 			
 			int decisao2b;
 			
@@ -328,8 +329,9 @@ int main(){
 				} else {
 					printf("Decisao invalida! Escolha um valor entre 1 e 4\n");
 				}
-			} 
-		}else {
+			}
+		}
+		else {
         printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");	
 		}
     }

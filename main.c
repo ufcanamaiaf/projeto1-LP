@@ -51,7 +51,7 @@ char* imprimirCreditos(){
 
 int main(){
 
-    printf("\nVoce acorda no meio de uma floresta.\nEste frio. Nao sabe ha quanto tempo esta ali nem como chegou aquele lugar.\n");
+    printf("\nVoce acorda no meio de uma floresta.\nEsta frio. Nao sabe ha quanto tempo esta ali nem como chegou aquele lugar.\n");
     printf("\nAo verificar seus bolsos, encontra alguns objetos:\n");
 
     printf("%s\n", imprimirTracos());
@@ -146,7 +146,7 @@ int main(){
     delay(2);
 
     int decisao2 = 0;
-    while ((decisao2 < 1 || decisao2 > 3)){
+    while (decisao2 < 1 || decisao2 > 3){
         printf("1- Abandonar a floresta\n");
         printf("2- Analisar o perimetro\n");
         printf("3- Entrar na casa\n");
@@ -211,53 +211,53 @@ int main(){
             // 1.1: LUTAR OU FUGIR
             while (decisao2a < 1 || decisao2a > 2){
                 printf("1- Lutar\n");
-            printf("2- Fugir\n");
-            printf("\nEscolha: ");
-
-            scanf("%d", &decisao2a);
-
-            if(decisao2a == 1){
-                // LUTAR COM O ZUMBI 
-                printf("Voce luta e vence");
-                delay(2);
-                decisao2 = 3;
-
-                printf("%s\n", imprimirTracos());
-
-            } else if(decisao2a == 2){
-                // FUGIR E MORRER
-                printf("Desesperado e com medo, voce faz de tudo para fugir da criatura\n");
-                printf("Voce tenta retornar a casa, mas a floresta fica cada vez mais sufocante.\n\n");
-
-                delay(2);
-
-                printf("E tarde demais, voce deixou tudo para tras. Sua casa, sua familia, e voce sabe o que vai acontecer.\n");
-                printf("Voce vai morrer aqui\n\n");
-                delay(3);
-
-                printf("O seu radio comeca a transmitir uma voz angelical, doce e sutil\n");
-                printf("E uma crianca, e ela te diz:\n");
-
-                delay(4);
-                printf("- Voce nao deveria ter vindo.\n\n");
-                delay(2);
-
-                printf("As arvores voltam a mexer violentamente atras de voce, voce percebe que nao esta mais sozinho. \n");
-                printf("Assim como voce percebeu que o caminho que escolheu no inicio acabou de leva-lo a morte.\n\n");
-                delay(5);
-
-                printf("O Zumbi de Sangue te alcanca.\n\n");
-                delay(2);
-
-                printf("Voce esta morto, agente.");
-
-                printf("%s\n", imprimirTracos());
-
-                delay(5);
-            } else {
-                printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
-            }
-            }
+	            printf("2- Fugir\n");
+	            printf("\nEscolha: ");
+	
+	            scanf("%d", &decisao2a);
+	
+	            if(decisao2a == 1){
+	                // LUTAR COM O ZUMBI 
+	                printf("Voce luta e vence");
+	                delay(2);
+	                decisao2 = 3;
+	
+	                printf("%s\n", imprimirTracos());
+	
+	            } else if(decisao2a == 2){
+	                // FUGIR E MORRER
+	                printf("Desesperado e com medo, voce faz de tudo para fugir da criatura\n");
+	                printf("Voce tenta retornar a casa, mas a floresta fica cada vez mais sufocante.\n\n");
+	
+	                delay(2);
+	
+	                printf("E tarde demais, voce deixou tudo para tras. Sua casa, sua familia, e voce sabe o que vai acontecer.\n");
+	                printf("Voce vai morrer aqui\n\n");
+	                delay(3);
+	
+	                printf("O seu radio comeca a transmitir uma voz angelical, doce e sutil\n");
+	                printf("E uma crianca, e ela te diz:\n");
+	
+	                delay(4);
+	                printf("- Voce nao deveria ter vindo.\n\n");
+	                delay(2);
+	
+	                printf("As arvores voltam a mexer violentamente atras de voce, voce percebe que nao esta mais sozinho. \n");
+	                printf("Assim como voce percebeu que o caminho que escolheu no inicio acabou de leva-lo a morte.\n\n");
+	                delay(5);
+	
+	                printf("O Zumbi de Sangue te alcanca.\n\n");
+	                delay(2);
+	
+	                printf("Voce esta morto, agente.");
+	
+	                printf("%s\n", imprimirTracos());
+	
+	                delay(5);
+	            } else {
+	                printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
+	            }
+	        }
         }
 
         else if(decisao2 == 2){
@@ -338,6 +338,46 @@ int main(){
 
     if(decisao2 == 3){
         // ENTRAR NA CASA
+        
+        printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n");
+        printf("Ha moveis antigos, fotografias na parede e brinquedos espalhados pelo chao\n");
+        printf("No corredor da casa uma das fotografias se destaca, nela contem uma familia: pai, mae e filha.\n");
+        printf("Voce escuta um barulho de algo correndo no andar de cima!\n");
+        printf("Logo depois, escuta uma forte batida!\n");
+        printf("Um silencio ensurdecedor toma conta da casa...\n");
+        printf("Entao uma voz diz:...\n");
+        printf("Voce demorou.\n");
+        printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n");
+        
+        int decisao3 = 0
+        
+        while (decisao3 < 1 || decisao2 > 3 ){
+        	
+        	printf("1- Perguntar quem ela e.\n");
+        	printf("2- Tentar fugir.\n");
+        	printf("3- Apontar a arma para ela.\n");
+        	
+        	printf("\nEscolha: ");
+        	scanf("%d", &decisao3);
+        	
+        	if(decisao3 == 1){
+        		//PERGUNTAR QUEM ELA E
+        		
+        		printf("Voce pergunta qual e o nome da garota.\n");
+        		printf("O meu nome e Livia\n")
+        	
+			} else if(decisao3 == 2){
+				//
+			
+			}else if(decisao3 == 3){
+				
+			}else{
+				
+				printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");
+				
+			}
+		}
+        
     }
 
     return 0;

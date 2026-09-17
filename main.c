@@ -377,6 +377,12 @@ int main(){
     monst.pv_total = 25;
     monst.dano = 10;
 
+    char *nomePlayer;
+
+    printf("Bem vindo ao jogo X.");
+    printf("Digite seu nome:");
+    scanf("%s", &nomePlayer);
+
     printf("\nVoce acorda no meio de uma floresta.\nEsta frio. Nao sabe ha quanto tempo esta ali nem como chegou aquele lugar.\n");
     printf("\nAo verificar seus bolsos, encontra alguns objetos:\n");
 
@@ -681,6 +687,7 @@ int main(){
         printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n");
 
         int decisao3 = 0;
+        int irAoPorao = 0;
 
         while (decisao3 < 1 || decisao3 > 3 ){
 
@@ -707,6 +714,8 @@ int main(){
         		printf("Voce pergunta: \"Onde ele esta?\"\n");
         		printf("Ela aponta para o porao.\n");
 
+                irAoPorao = 1;
+
         		break;
 
 			} else if(decisao3 == 2){
@@ -719,6 +728,9 @@ int main(){
 				printf("A garota aparece por tras e fala:\n");
 				printf("\"Por favor nao va!\"\n");
 				printf("Ela corre e voce vai atras dela.\n");
+                printf("Voce percebe que ela esta indo para uma pequena passagem que te leva ao porao");
+
+                irAoPorao = 1;
 
 				break;
 
@@ -747,6 +759,8 @@ int main(){
         				printf("A garota desaparece e a casa comeca a tremer. Voce percebe que o tiro nao atingiu ela. \n");
         				printf("Entao, escuta um barulho vindo do porao.");
 
+                        irAoPorao = 1;
+
         				break;
 
 					} else if (decisao3a == 2){
@@ -754,6 +768,12 @@ int main(){
 
 						printf("Voce abaixa a arma.\n");
 						printf("A garota desaparece pelo corredor.\n");
+                        printf("A garota aparece por tras de voce e fala:\n");
+                        printf("\"Por favor nao va!\"\n");
+                        printf("Ela corre e voce vai atras dela.\n");
+                        printf("Voce percebe que ela esta indo para uma pequena passagem que te leva ao porao");
+
+                        irAoPorao = 1;
 
 						break;
 
@@ -761,16 +781,136 @@ int main(){
 
 						printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
 					}
+
+
 				}
 
 				break;
 
 			}else{
-
 				printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");
-
 			}
 		}
+
+        // rota do porão
+        if(irAoPorao == 1){
+            int decisao4;
+            imprimirTracos();
+
+            printf("Voce segue ate o porao...\n");
+            delay(1);
+
+            printf("Ao descer as escadas, voce encontra varios objetos pertencentes a antiga equipe espalhados pelo chao.\n");
+            delay(1);
+
+            printf("No centro do local existe um circulo desenhado no chao, com a fotografia de Livia no meio.\n");
+
+            printf("Ao lado, esta o corpo de um dos agentes. Voce o conhecia.\n");
+            printf("O nome dele era Aaron, um atirador de elite importante para a agencia.\n\n");
+            delay(1);
+
+            printf("\nVoce encontra um documento:\n");
+            delay(1);
+
+            printf("\"O pai tentou trazer sua esposa de volta, apos morrer em um tragico acidente.\n");
+            printf("Para isso, sacrificou a propria filha.\"\n");
+            delay(2);
+
+            printf("\nVoce finalmente entende o que aconteceu...\n");
+            delay(1);
+
+            printf("Livia morreu durante o ritual.\n");
+            delay(1);
+
+            printf("Mas durante o ritual, algo deu errado, liberando uma entidade e deixando a alma de sua filha presa a casa.\n");
+            delay(2);
+
+            printf("\nDe repente, Livia aparece no final da escada.\n");
+            delay(1);
+
+            printf("\nLivia: \"Voce veio me matar tambem?\"\n");
+            
+            imprimirTracos();
+
+            delay(2);
+
+            printf("\n1- Perguntar o que aconteceu com ela.\n");
+            printf("2- Apontar a arma para Livia.\n");
+
+            printf("\nEscolha: ");
+            scanf("%d", &decisao4);
+
+            if(decisao4 == 1){
+                imprimirTracos();
+
+                printf("\n%s: O que aconteceu com voce?\n", nomePlayer);
+                delay(1);
+
+                printf("\nLivia permanece em silencio por alguns segundos.\n");
+                delay(1);
+
+                printf("Livia: Eu nao deveria estar aqui...\n");
+                delay(1);
+
+                printf("Livia: Meu pai fez um ritual. Ele queria trazer minha mae de volta.\n");
+                printf("Mas precisava de alguem para oferecer em troca.\n");
+                delay(2);
+
+                printf("\n%s: E ele escolheu voce...\n", nomePlayer);
+                delay(1);
+
+                printf("Livia: Sim. Eu fui o sacrificio.\n");
+                delay(2);
+
+                printf("Voce percebe que Livia nao estava protegendo a casa.\n");
+                printf("Ela estava presa nela.\n");
+                delay(2);
+            } else if (decisao4 == 2){
+                imprimirTracos();
+
+                printf("\nVoce aponta a arma para Livia.\n");
+                delay(1);
+
+                printf("Livia nao demonstra medo.\n");
+                delay(1);
+
+                printf("Livia: Foi isso que mandaram voce fazer?\n\n");
+                delay(2);
+
+                printf("Voce se lembra da sua missao: impedir que a manifestacao escape.\n");
+                delay(2);
+
+                printf("Livia olha para o circulo no chao.\n\n");
+                delay(1);
+
+                printf("Livia: Se voce me matar, ela vai sair.\n");
+                delay(2);
+
+                printf("Voce olha para o circulo e hesita.\n\n");
+                delay(1);
+
+                printf("Livia: Eu sei o que voce esta pensando.");
+                delay(2);
+                printf("Livia: Mas, se puxar o gatilho, nao vai conseguir impedir o que esta aqui.\n\n");
+                delay(2);
+
+                printf("\nVoce fica em duvida sobre o que fazer.\n");
+                delay(2);
+
+                imprimirTracos();
+
+                int decisao4a;
+
+                if(decisao4a == 1){
+
+                } else if(decisao4a == 2){
+
+                }else{
+                    
+                }
+
+            }
+        }
 
     }
 

@@ -554,7 +554,13 @@ int main(){
 	                if(decisao2 != 3){
                         break;
 	                }
-	                printf("\nDepois de uma longa e dura batalha contra o zumbi, você decide entrar na casa pela porta da frente e enfim investigar o interior da casa\n\n");
+	                printf("\nDepois de uma longa e dura batalha contra o zumbi, voce ouve um chiado\n");
+                    printf("Foi o radio, e voce ouve uma voz feminina e infantil, que fala:");
+                    printf("?: Voce nao deveria ter matado isso...\n\n");
+
+                    printf("Voce repara no corpo do zumbi, e voce percebe que ele usava um cracha da ordem.\nEra um agente.\n\n");
+
+                    printf("Depois de alguns minutos tentando entender o que aconteceu, você decide entrar na casa pela porta da frente e enfim investigar o interior da casa");
 	                delay(5);
 
 	                printf("%s\n", imprimirTracos());
@@ -842,7 +848,7 @@ int main(){
             printf("\nEscolha: ");
             scanf("%d", &decisao4);
 
-            if(decisao4 == 1){
+            if(decisao4 == 1){ // vai pro encontro final em 2 ocasioes (se perguntar oq aconteceu, e se decidir abaixar a arma)
                 imprimirTracos();
 
                 printf("\n%s: O que aconteceu com voce?\n", nomePlayer);
@@ -966,7 +972,156 @@ int main(){
             }
 
             if(decisao5 == 1){
-                // ENCONTRO FINAL
+
+                imprimirTracos();
+
+                printf("\nLivia olha para voce por alguns segundos.\n");
+                delay(1);
+
+                printf("Livia: Eu nao escolhi ficar aqui.\n");
+                delay(2);
+
+                printf("\nEla olha para o circulo no chao.\n");
+                delay(1);
+
+                printf("Livia: Essa coisa ainda esta presa a mim.\n");
+                delay(2);
+
+                printf("Livia: Se quiser impedir que ela escape, precisa destruir o ritual.\n");
+                delay(2);
+
+                printf("\nVoce observa os simbolos espalhados pelo chao.\n");
+                printf("Agora entende que sua missao nao sera tao simples quanto parecia.\n\n");
+                delay(2);
+
+                imprimirTracos();
+
+                printf("\nO que voce vai fazer?\n");
+                printf("1- Matar Livia.\n");
+                printf("2- Tentar salvar Livia.\n");
+                printf("3- Nao fazer nada.\n");
+
+                printf("\nEscolha: ");
+                scanf("%d", &decisao5);
+
+                if(decisao5 == 1){
+
+                    printf("\nVoce decide cumprir sua missao.\n");
+                    delay(1);
+
+                    printf("Voce acredita que matar Livia vai impedir a manifestacao.\n");
+                    delay(2);
+
+                    printf("Voce aponta a arma para ela.\n");
+                    delay(1);
+
+                    printf("Voce dispara.\n");
+                    delay(2);
+
+                    printf("Livia cai no chao.\n");
+                    delay(2);
+
+                    printf("\nPor alguns segundos, tudo fica em silencio.\n");
+                    delay(2);
+
+                    printf("A sombra desaparece.\n");
+                    delay(1);
+
+                    printf("Voce pensa que conseguiu cumprir sua missao.\n");
+                    delay(2);
+
+                    printf("\nEntao, escuta um barulho atras de voce.\n");
+                    delay(2);
+
+                    printf("A sombra surge novamente.\n");
+                    delay(2);
+
+                    printf("\nVoce percebe tarde demais que Livia nao era a entidade.\n");
+                    printf("Ela apenas estava mantendo a entidade presa.\n");
+                    delay(2);
+
+                    printf("\nVoce cumpriu sua missao, mas acabou libertando a entidade.\n");
+                    delay(2);
+
+                    imprimirCreditos();
+
+                } else if(decisao5 == 2){
+
+                    printf("\nVoce decide tentar salvar Livia.\n");
+                    delay(2);
+
+                    printf("Livia se aproxima do circulo.\n");
+                    delay(1);
+
+                    printf("Livia: Entao me ajuda.\n");
+                    delay(2);
+
+                    printf("Ela explica que existe uma forma de quebrar o ritual e separar a entidade dela.\n");
+                    delay(2);
+
+                    printf("\nVoce se aproxima dos simbolos desenhados no chao.\n");
+                    printf("Com cuidado, comeca a destruir cada um deles.\n");
+                    delay(3);
+
+                    printf("\nA sombra comeca a desaparecer.\n");
+                    delay(2);
+
+                    printf("A entidade abandona Livia e a casa.\n");
+                    delay(2);
+
+                    printf("Livia olha para voce e sorri.\n");
+                    delay(1);
+
+                    printf("Livia: Obrigada.\n");
+                    delay(2);
+
+                    printf("Ela desaparece.\n");
+                    delay(2);
+
+                    printf("\nVoce consegue sair da casa.\n");
+                    delay(2);
+
+                    imprimirTracos();
+
+                    printf("\nFINAL - A MENINA\n");
+                    printf("Voce salvou Livia, mas desobedeceu a Ordem.\n");
+                    delay(2);
+
+                    imprimirCreditos();
+
+                } else if(decisao5 == 3){
+
+                    printf("\nVoce fica parado, sem saber o que fazer.\n");
+                    delay(2);
+
+                    printf("A sombra comeca a tomar conta de Livia.\n");
+                    delay(2);
+
+                    printf("Livia olha para voce.\n");
+                    delay(1);
+
+                    printf("Livia: Eu tentei avisar.\n");
+                    delay(2);
+
+                    printf("A casa comeca a tremer.\n");
+                    delay(2);
+
+                    printf("As luzes se apagam.\n");
+                    delay(2);
+
+                    imprimirTracos();
+
+                    printf("\nFINAL - TARDE DEMAIS\n");
+                    printf("A entidade toma conta da casa e voce nao consegue impedir a manifestacao.\n");
+                    delay(2);
+
+                    imprimirCreditos();
+
+                } else {
+
+                    printf("\nOpcao invalida. Escolha um valor entre 1 e 3.\n");
+
+                }
             }
         }
 

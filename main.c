@@ -795,6 +795,8 @@ int main(){
         // rota do porão
         if(irAoPorao == 1){
             int decisao4;
+            int decisao5;
+
             imprimirTracos();
 
             printf("Voce segue ate o porao...\n");
@@ -865,6 +867,8 @@ int main(){
                 printf("Voce percebe que Livia nao estava protegendo a casa.\n");
                 printf("Ela estava presa nela.\n");
                 delay(2);
+                
+                decisao5 = 1;
             } else if (decisao4 == 2){
                 imprimirTracos();
 
@@ -898,15 +902,63 @@ int main(){
                 delay(2);
 
                 imprimirTracos();
-
                 int decisao4a;
 
+                printf("1- Abaixar a arma");
+                printf("2- Atirar");
+
+
+                printf("Escolha: ");
+                scanf("%d", &decisao4a);
+
                 if(decisao4a == 1){
+                    imprimirTracos();
+
+                    printf("\nVoce abaixa a arma.\n");
+                    delay(1);
+
+                    decisao5 = 1;
+
+                    imprimirCreditos();
 
                 } else if(decisao4a == 2){
+                    printf("\nVoce dispara.\n");
+                    delay(1);
+
+                    printf("Livia cai no chao.\n");
+                    delay(2);
+
+                    printf("\nPor alguns segundos, tudo fica em silencio.\n");
+                    delay(2);
+
+                    printf("A sombra desaparece.\n");
+                    delay(1);
+
+                    printf("Voce pensa que conseguiu cumprir sua missao.\n");
+                    delay(2);
+
+                    printf("\nEntao, voce escuta um barulho atras de voce.\n");
+                    delay(2);
+
+                    printf("A sombra surge novamente.\n");
+                    delay(2);
+
+                    printf("\nVoce percebe tarde demais que Livia nao era a prisao.\n");
+                    delay(2);
+
+                    printf("Ela era a unica coisa mantendo a entidade sob controle.\n");
+                    delay(2);
+
+                    printf("Voce cumpriu sua missao, mas acabou libertando a entidade.\n");
+                    delay(2);
+
+                    printf("A sombra avanca em sua direcao. E dessa vez, nao ha para onde fugir...\n");
+                    delay(2);
+
+                    imprimirCreditos();
 
                 }else{
-                    
+                    printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
                 }
 
             }

@@ -669,7 +669,7 @@ int main(){
 		} else if (decisao2 == 3){
 			break;
 		}else {
-        printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");
+            printf("\nOpcao invalida. Escolha um valor entre 1 e 3\n");
 		}
     }
 
@@ -921,7 +921,7 @@ int main(){
 
                     imprimirCreditos();
 
-                } else if(decisao4a == 2){
+                } else if(decisao4a == 2){ // FINAL - A MISSAO
                     printf("\nVoce dispara.\n");
                     delay(1);
 
@@ -961,6 +961,12 @@ int main(){
                     printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
                 }
 
+            } else{ 
+                printf("\nOpcao invalida. Escolha um valor entre 1 e 2");
+            }
+
+            if(decisao5 == 1){
+                // ENCONTRO FINAL
             }
         }
 

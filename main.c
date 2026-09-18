@@ -285,8 +285,51 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
             }
         }
         else if (tatica == 3){
-            //SE CURAR
-            girar_teste();
+            if(ag->pv == ag->pv_total){
+                printf("você está com vida cheia, não precisa se curar :)");
+            }
+            else{
+                if(ag->pv >=19 && ag->pv <= 25){
+                    printf("você tenta fazer um remendo rápido para algumas feridas superficiais no corpo");
+                }
+                else if(ag->pv >=10 && ag->pv <= 18){
+                    printf("você tenta uma forma fazer um remendo improvisado para feridas menos superficiais");
+                }
+                else if(ag->pv >=1 && ag->pv <= 9){
+                    printf("você tenta uma forma de fazer algo que estanque as feridas mais profundas");
+                }
+                delay(3);
+                dado = girar_teste();
+
+                if(dado >= 1 && dado <= 2){
+                    printf("você faz um leve e rápido remendo para as pequenas feridas e logo volta a focar na batalha, você recupera 3 pontos de vida");
+                    ag->pv += 3;
+                    reduz_dano_ag = 6;
+                }
+
+                if(dado >= 3 && dado <= 5){
+                    printf("você faz um ótimo remendo que pode estancar uma ferida, você recupera 5 pontos de vida\n");
+                    delay(3);
+                    printf("enquanto isso o monstro avança mas você esta preparado para esquivar\n\n");
+                    delay(2);
+                    ag->pv += 6;
+                    reduz_dano_ag = 5;
+
+                }
+
+                if(dado == 6){
+                    printf("você faz um ótimo remendo improvisado com poucas coisas usáveis ao seu redor, você recupera 7 pontos de vida\n");
+                    delay(3);
+                    printf("enquanto isso o monstro , embora com dificuldade você ainda consegue se esquivar\n\n");
+                    delay(2);
+                    reduz_dano_ag = 3;
+                    ag->pv += 8;
+                }
+                ataquemonstro(ag,mo,dano_bruto_ag = 0,num_luta,tatica,reduz_dano_ag);
+                if(ag->pv > ag->pv_total){
+                    ag->pv == ag->pv_total;
+                }
+            }
         }
         else if (tatica == 4){// FUGIR
             printf("Desesperado e com medo, voce faz de tudo para fugir da criatura\n");
@@ -398,10 +441,10 @@ int main(){
     persona.forca = 2;
     persona.agilidade = 3;
     persona.intelecto = 2;
-    persona.pv_total = 25;
-    persona.pv = 25;
+    persona.pv_total = 26;
+    persona.pv = 26;
     persona.sanidade = 20;
-    persona.armadura = 7;
+    persona.armadura = 6;
 
     persona.armas.nome = "Beretta 92FS";
     persona.armas.dano = 6;
@@ -411,9 +454,9 @@ int main(){
 
     monst.nome = "Zumbi de sangue";
     monst.resistencia_dano = 12;
-    monst.pv = 35;
+    monst.pv = 37;
     //para facilitar caso precise
-    monst.pv_total = 35;
+    monst.pv_total = 37;
     monst.dano = 9;
 
     char *nomePlayer;

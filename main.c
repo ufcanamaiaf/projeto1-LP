@@ -8,7 +8,7 @@ int d6(){
 }
 
 void delay(int segundos){
-    segundos = 0;
+    segundos;
     sleep(segundos);
 }
 // nessa funcao, para colocar um intervalo de tempo em segundos entre a execucao de um texto/funcao e outro, como por exemplo 1 segundo, precisa escrever 'delay(1)'
@@ -457,12 +457,12 @@ int main(){
     monst.pv = 37;
     //para facilitar caso precise
     monst.pv_total = 37;
-    monst.dano = 9;
+    monst.dano = 10;
 
     char *nomePlayer;
 
     printf("Bem vindo ao jogo X.");
-    printf("Digite seu nome:"/*(não coloque espaço)*/"");
+    printf("Digite seu nome:"/*(não coloque espaço no nome)*/"");
     scanf("%s", &nomePlayer);
 
     printf("\nVoce acorda no meio de uma floresta.\nEsta frio. Nao sabe ha quanto tempo esta ali nem como chegou aquele lugar.\n");

@@ -597,6 +597,7 @@ int main(){
 
     int decisao2 = 0;
     while (decisao2 < 1 || decisao2 > 3){
+        imprimirTracos;
         printf("1- Abandonar a floresta\n");
         printf("2- Analisar o perimetro\n");
         printf("3- Entrar na casa\n");
@@ -746,13 +747,15 @@ int main(){
         else if(decisao2 == 2){
             // ANALISAR O PERIMETRO
             printf("Ao olhar ao redor da casa voce percebe marcas no chao, simbolos estranhos gravados nas arvores, restos de velas, e...\n");
-			printf("pequenas pegadas, provavelmente de uma crianca;\n");
-			printf("Voce segue andando em direcao ao que parece ser os fundos da casa, la ha uma porta e perto dela uma janela quebrada.\n\n");
+            delay(2);
+			printf("Pequenas pegadas, provavelmente de uma crianca.\n");
+            delay(2);
+			printf("Voce segue andando em direcao ao que parece ser os fundos da casa, la ha uma porta e perto dela uma janela quebrada.\n\n"); delay(3);
 
-			printf("Perto da janela tem uma caixa velha de madeira enterrada ate a metade.\n");
+			printf("Perto da janela tem uma caixa velha de madeira enterrada ate a metade.\n"); delay(2);
 			printf("Ao abri-la voce acha um medalhao e um papel manchado.\n");
-			printf("Voce pega o medalhao primeiro, nele ha uma foto de uma garota pequena e na parte de tras esta gravado \"Livia - 8 anos\"\n");
-			printf("Voce solta o medalhao e pega o papel, nele esta escrito \"Ela nao nasceu assim\", as letras fundas no papel manchado.\n");
+			printf("Voce pega o medalhao primeiro, nele ha uma foto de uma garota pequena e na parte de tras esta gravado \"Livia - 8 anos\"\n");delay(2);
+			printf("Voce solta o medalhao e pega o papel, nele esta escrito \"Ela nao nasceu assim\"\n");delay(2);
 
 			printf("%s\n", imprimirTracos());
 
@@ -823,21 +826,21 @@ int main(){
     if(decisao2 == 3){
         // ENTRAR NA CASA
 
-        printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n");
-        printf("Ha moveis antigos, fotografias na parede e brinquedos espalhados pelo chao\n");
-        printf("No corredor da casa uma das fotografias se destaca, nela contem uma familia: pai, mae e filha.\n");
-        printf("Voce escuta um barulho de algo correndo no andar de cima!\n");
-        printf("Logo depois, escuta uma forte batida!\n");
-        printf("Um silencio ensurdecedor toma conta da casa...\n");
-        printf("Entao uma voz diz:...\n");
-        printf("\"Voce demorou.\"\n");
-        printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n");
+        printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n"); delay(2);
+        printf("Ha moveis antigos, fotografias na parede e brinquedos espalhados pelo chao\n");delay(2);
+        printf("No corredor da casa uma das fotografias se destaca, nela contem uma familia: pai, mae e filha.\n"); delay(3);
+        printf("Voce escuta um barulho de algo correndo no andar de cima!\n"); delay(2);
+        printf("Logo depois, escuta uma forte batida!\n"); delay(2);
+        printf("Um silencio ensurdecedor toma conta da casa...\n");delay(2); 
+        printf("Entao uma voz diz:...\n"); delay(3);
+        printf("?: Voce demorou.\n"); delay(3);
+        printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n"); delay(2);
 
         int decisao3 = 0;
         int irAoPorao = 0;
 
         while (decisao3 < 1 || decisao3 > 3 ){
-
+            imprimirTracos;
         	printf("1- Perguntar quem ela e.\n");
         	printf("2- Tentar fugir.\n");
         	printf("3- Apontar a arma para ela.\n");
@@ -847,24 +850,24 @@ int main(){
 
         	if(decisao3 == 1){
         		//PERGUNTAR QUEM ELA E
-
+                imprimirTracos;
         		printf("Voce pergunta qual e o nome da garota.\n");
         		printf("Ela responde:\n");
-        		printf("\"?: O meu nome e Livia.\"\n");
+        		printf("?: O meu nome e Livia.\n");
                 delay(3);
 
         		printf("A menina permanece parada. Depois de alguns segundos, pergunta:\n");
-        		printf("\"Livia: Voce veio terminar o trabalho deles?\"\n");
+        		printf("Livia: Voce veio terminar o trabalho deles?\n");
         		printf("Ela olha para o seu simbolo da Ordem no uniforme. Voce nao entende o que ela quer dizer.\n");
-        		printf("\"%s: Quem sao eles?\"\n", nomePlayer);
+        		printf("%s: Quem sao eles?\n", nomePlayer);
                 delay(3);
 
-        		printf("\"Livia: Os homens que vieram antes de voce, eles tambem fizeram perguntas.\"\n");
+        		printf("Livia: Os homens que vieram antes de voce, eles tambem fizeram perguntas.\n");
                 delay(1);
-        		printf("\"Livia: Eles estavam procurando meu pai...\"\n");
+        		printf("Livia: Eles estavam procurando meu pai...\n");
                 delay(2);
                 
-                printf("\"%s: Onde ele esta?\"\n", nomePlayer);
+                printf("%s: Onde ele esta?\n", nomePlayer);
                 delay(2);
         		printf("Ela aponta para o porao.\n");
 

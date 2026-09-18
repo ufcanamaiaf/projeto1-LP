@@ -7,8 +7,9 @@ int d6(){
     return (rand() % 6) + 1;
 }
 
-void delay(int seconds){
-    sleep(seconds);
+void delay(int segundos){
+    segundos = 0;
+    sleep(segundos);
 }
 // nessa funcao, para colocar um intervalo de tempo em segundos entre a execucao de um texto/funcao e outro, como por exemplo 1 segundo, precisa escrever 'delay(1)'
 
@@ -64,25 +65,37 @@ int girar_teste(){
 void ataquemonstro(Agente *ag, Monstro *mo, int dano_recebido, int num_luta, int tatica, int reduz_dano_ag){
     if(mo->pv > 0){
         if(num_luta == 1){
-        if ((dano_recebido >= 12 && mo->resistencia_dano > 0) || (dano_recebido < 12 && mo->resistencia_dano <= 0) || (dano_recebido < 12 && mo->resistencia_dano > 0)) {
-            int dado_mo = d6();
-            int dano_bruto_mo = dado_mo + mo->dano - reduz_dano_ag;
-            int dano_sofrido = dano_bruto_mo - ag->armadura;
-            ag->armadura--;
+            if ((dano_recebido >= 12 && mo->resistencia_dano > 0) || (dano_recebido < 12 && mo->resistencia_dano <= 0) || (dano_recebido < 12 && mo->resistencia_dano > 0)) {
+                int dado_mo = d6();
+                int dano_bruto_mo;
+                if(mo->pv <= 15){
+                    dano_bruto_mo  = dado_mo + (mo->dano + 3) - reduz_dano_ag;
+                }
+                else{
+                    dano_bruto_mo = dado_mo + mo->dano - reduz_dano_ag;
+                }
+                int dano_sofrido = dano_bruto_mo - ag->armadura;
+                ag->armadura--;
 
-            if (dano_sofrido < 0) dano_sofrido = 0;
+                if (dano_sofrido < 0){
+                    dano_sofrido = 0;
+                }
 
-            ag->pv -= dano_sofrido;
-
-            printf("\nO %s avanca e desfere um golpe.\n", mo->nome);
-            printf("Voce recebe %d de dano.\n\n", dano_sofrido);
-            delay(3);
+                ag->pv -= dano_sofrido;
+                if(mo->pv <= 15){
+                    printf("zumbi de sangue parece bem mais agressivo, é melhor tomar cuidado");
+                    delay(1);
+                }
+                printf("\nO zumbi de sangue avanca e tenta desferir um golpe.\n");
+                delay(1);
+                printf("Voce recebe %d de dano.\n\n", dano_sofrido);
+                delay(3);
+            }
+            else if(dano_recebido >= 12 && mo->resistencia_dano <= 0){
+                printf("Criatura esta desnorteada por esse turno\n\n");
+                delay(2);
+            }
         }
-        else if(dano_recebido >= 12 && mo->resistencia_dano <= 0){
-            printf("Criatura esta desnorteada por esse turno\n\n");
-            delay(2);
-        }
-    }
     }
     else{
         printf("Criatura está incapacitada de se mover\n");
@@ -91,11 +104,14 @@ void ataquemonstro(Agente *ag, Monstro *mo, int dano_recebido, int num_luta, int
 }
 
 // TURNO DO AGENTE
-void luta(Agente *ag, Monstro *mo, int tatica,int num_luta, int fraqueza){
+void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
     int dano_bruto_ag;
     int dado;
     int dano_rest;
     int reduz_dano_ag;
+    int chance2 = 0;
+    int chance = 0;
+
     if(num_luta == 1){
         //ATIRAR
         if (tatica == 1){
@@ -147,7 +163,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta, int fraqueza){
                     }
                     }else{
                         mo->pv = mo->pv - dano_bruto_ag;
-                        printf("Voce causou %d de dano a criatura,parece ter nocauteado a criatura mas logo se reergue\n\n", dano_bruto_ag);
+                        printf("Voce causou %d de dano a criatura,parece ter nocauteado a criatura mas tenta se reerguer denovo\n\n", dano_bruto_ag);
                     }
                     delay(3);
                     ataquemonstro(ag,mo,dano_bruto_ag,num_luta,tatica,reduz_dano_ag = 0);
@@ -158,90 +174,119 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta, int fraqueza){
             }
         }
 
-        //PROCURAR POR OBJETO
+        //PROCURAR POR OBJETO QUE AJUDE
         else if (tatica == 2){
             printf("Voce desesperadamente procura por algo que ajude a lidar com o zumbi a sua frente\n\n");
             delay(3);
-            dado = girar_teste();
+            if(chance != 3 || chance2 != 1){
+                while(chance !=3 || chance2 != 1 ){
+                    dado = girar_teste();
 
-            if (dado >= 1 && dado <= 3){
-                printf("Voce nao encontra nada que te ajude e a criatura avança\n\n");
-                delay(3);
-                printf("Tera de fazer um teste para se esquivar da criatura\n\n");
-                delay(3);
-                dado = girar_teste();
-                if(dado >= 1 && dado <= 3){
-                    reduz_dano_ag=1;
-                    printf("Voce nao consegue se mover direito devido ao nevorsismo, e a criatura avança para cima\n\n");
-                }
-                else if(dado>=5 && dado<=6){
-                    reduz_dano_ag = 5;
-                    printf("Voce conseguiu se esquivar bem da criatura embora ainda tenha se machucado\n\n");
-                }
-                delay(3);
-                ataquemonstro(ag,mo,dano_bruto_ag = 0,num_luta,tatica,reduz_dano_ag);
-            }
-
-            else if(dado >= 4 && dado <= 5){
-                printf("Voce avança para o movel mais próximo de levantar, talvez isso possa ajudar ao menos a afastar a criatura\n\n");
-                delay(3);
-                dado = girar_teste();
-                dano_bruto_ag = dado + 7;
-                if(mo->resistencia_dano > 0){
-                        mo->pv -= 1;
-                        mo->resistencia_dano -= dano_bruto_ag;
-                        printf("Voce causou 1 de dano, dano tao proximo assim com uma criatura bem resistente e perigosum. \n\n");
-                        if(mo->resistencia_dano < 0){
-                            mo->resistencia_dano = 0;
-                        }
-                    }else{
-                        mo->pv -= dano_bruto_ag;
-                        printf("Voce causou %d no monstro, de fato\n\n", dano_bruto_ag);
-                    }
-                    delay(3);
-                    ataquemonstro(ag,mo,dano_bruto_ag,num_luta,tatica,reduz_dano_ag=0);
-            }
-
-            else if(dado == 6){
-                printf("Em meio a situacao desesperadora, por uma sorte milagrosamente milagrosa voce encontra uma arma de outro agente\n");
-                delay(3);
-                dado = girar_teste();
-                dano_bruto_ag = dado + 9;
-                if(dado >= 1 && dado <= 4){
-                    if(mo->resistencia_dano > 0){
-                        mo->pv -= 4;
-                        mo->resistencia_dano -= dano_bruto_ag;
-                        printf("Voce causou 4 de dano, parece ter atravessado sua resistencia. \n\n");
-                        if(mo->resistencia_dano < 0){
-                            mo->resistencia_dano = 0;
-                        }
-                    }else{
-                        mo->pv -= dano_bruto_ag;
-                        printf("Voce causou %d no monstro, de fato", dano_bruto_ag);
-                    }
-                }
-                else if(dado>=5 && dado<=6){
-                    if(mo->resistencia_dano > 0){
-                        mo->pv -= 6;
-                        mo->resistencia_dano -= dano_bruto_ag;
-                        printf("Voce causou 4 de dano, parece ter acabado com sua resistencia \n\n");
-                        if(mo->resistencia_dano < 0){
-                            mo->resistencia_dano = 0;
-                        }
-                    }else{
-                        mo->pv -= dano_bruto_ag;
-                        printf("Voce golpeou e deu %d de dano, o zumbi de forma estrondosa, quase injusta por sua parte",dano_bruto_ag);
+                    if (dado >= 1 && dado <= 2){
+                        printf("Voce nao encontra nada que te ajude e a criatura avança\n\n");
                         delay(3);
+                        printf("Tera de fazer um teste para se esquivar da criatura\n\n");
+                        delay(3);
+                        ag->sanidade -=  4;
+                        dado = girar_teste();
+                        if(dado >= 1 && dado <= 3){
+                            reduz_dano_ag=2;
+                            printf("Voce nao consegue se mover direito devido ao nevorsismo, e a criatura avança para cima\n\n");
+                        }
+                        else if(dado>=4 && dado<=6){
+                            reduz_dano_ag = 6;
+                            printf("Voce conseguiu se esquivar bem da criatura embora ainda pareça ter se machucado\n\n");
+                        }
+                        delay(3);
+                        ataquemonstro(ag,mo,dano_bruto_ag = 0,num_luta,tatica,reduz_dano_ag);
+                        break;
+                    }
+
+                    else if(dado >= 3 && dado <= 5){
+                        if(chance <= 2){
+                            chance++;
+                            printf("Voce avança para o movel mais próximo de levantar, talvez isso possa ajudar ao menos a afastar a criatura\n\n");
+                            delay(3);
+                            dado = girar_teste();
+                            dano_bruto_ag = dado + 7;
+                            ag->sanidade -=  3;
+                        if(mo->resistencia_dano > 0){
+                            mo->pv -= 1;
+                            mo->resistencia_dano -= dano_bruto_ag;
+                            printf("Voce causou 1 de dano, um golpe tão próximo assim com uma criatura bem resistente é perigoso. \n\n");
+                            if(mo->resistencia_dano < 0){
+                                mo->resistencia_dano = 0;
+                            }
+                        }
+                        else{
+                            mo->pv -= dano_bruto_ag;
+
+                            printf("Voce causou %d no monstro, um golpe tão proximo assim foi perigoso mas foi um golpe forte\n\n", dano_bruto_ag);
+                        }
+                        delay(3);
+                        ataquemonstro(ag,mo,dano_bruto_ag,num_luta,tatica,reduz_dano_ag=0);
+                        break;
+                        }
+                        else{
+                            printf("não tem objetos por perto, terá de fazer o teste denovo");
+                        }
+                    }
+
+                    else if(dado == 6){
+                        if(chance2 != 1){
+                            chance2++;
+                            printf("Em meio a situacao desesperadora, por uma sorte milagrosamente milagrosa voce encontra uma arma de outro agente\n");
+                            delay(3);
+                            dado = girar_teste();
+                            dano_bruto_ag = dado + 9;
+                            ag->sanidade -=  2;
+                            if(dado >= 1 && dado <= 4){
+                                if(mo->resistencia_dano > 0){
+                                    mo->pv -= 4;
+                                    mo->resistencia_dano -= dano_bruto_ag;
+                                    printf("Voce causou 4 de dano, parece ter atravessado sua resistencia. \n\n");
+                                    if(mo->resistencia_dano < 0){
+                                        mo->resistencia_dano = 0;
+                                    }
+                                }
+                                else{
+                                    mo->pv -= dano_bruto_ag;
+                                    printf("Voce causou %d no monstro, de fato", dano_bruto_ag);
+                                }
+                            }
+                            else if(dado>=5 && dado<=6){
+                                if(mo->resistencia_dano > 0){
+                                    mo->pv -= 6;
+                                    mo->resistencia_dano -= dano_bruto_ag;
+                                    printf("Voce causou 4 de dano, parece ter acabado com sua resistencia \n\n");
+                                    if(mo->resistencia_dano < 0){
+                                        mo->resistencia_dano = 0;
+                                    }
+                                }
+                                else{
+                                    mo->pv -= dano_bruto_ag;
+                                    printf("Voce golpeou e deu %d de dano, o zumbi foi arrebentado de forma estrondosa, de forma quase injusta por sua parte\n\n",dano_bruto_ag);
+                                    delay(3);
+                                }
+                            }
+                        delay(3);
+                        ataquemonstro(ag,mo,dano_bruto_ag,num_luta,tatica,reduz_dano_ag=0);
+                        break;
+                        }
+                        else{
+                            printf("Você tirou um número parecido com esse antes, terá de fazer o teste denovo");
+                        }
                     }
                 }
-                delay(3);
-                ataquemonstro(ag,mo,dano_bruto_ag,num_luta,tatica,reduz_dano_ag=0);
             }
-
+            else{
+                printf("não tem objetos por perto, melhor se decidir rápido");
+                delay(3);
+            }
         }
-        else if (tatica == 3){//PROCURAR FRAQUEZA
+        else if (tatica == 3){
+            //SE CURAR
             girar_teste();
-        //
         }
         else if (tatica == 4){// FUGIR
             printf("Desesperado e com medo, voce faz de tudo para fugir da criatura\n");
@@ -293,29 +338,24 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
             delay(1);
             printf("1 - Atirar\n");
             printf("2 - Procurar por algo ao redor que ajude\n");
-            if (fraqueza == 0){
-                printf("3 - Procurar Fraqueza\n");
-            }
-            else{
-                printf("3 - Fraqueza Encontrada\n");
-            }
+            printf("3 - Tentar se curar\n");
             printf("4 - Fugir\n\n");
             printf("Escolha:");
             int tatica = 0;
             scanf("%d", &tatica);
 
             if(tatica == 1){
-                luta(ag, mo, 1,num_luta,fraqueza);
+                luta(ag, mo, 1,num_luta);
                 // dados de agente e monstro, escolha, numero da luta, variável para caso o agente tenha achado ou não a fraqueza do monstro;
             }
             else if(tatica == 2){
-                luta(ag, mo, 2,num_luta,fraqueza);
+                luta(ag, mo, 2,num_luta);
             }
             else if(tatica == 3){
-                luta(ag, mo, 3,num_luta,fraqueza);
+                luta(ag, mo, 3,num_luta);
             }
             else if(tatica == 4){
-                luta(ag, mo, 4,num_luta,fraqueza);
+                luta(ag, mo, 4,num_luta);
             }
             else{
                 printf("\nOpção inválida. Escolha um valor entre 1 e 4, e rápido.\n");
@@ -360,8 +400,8 @@ int main(){
     persona.intelecto = 2;
     persona.pv_total = 25;
     persona.pv = 25;
-    persona.sanidade = 12;
-    persona.armadura = 5;
+    persona.sanidade = 20;
+    persona.armadura = 7;
 
     persona.armas.nome = "Beretta 92FS";
     persona.armas.dano = 6;
@@ -370,17 +410,16 @@ int main(){
     Monstro monst;
 
     monst.nome = "Zumbi de sangue";
-    monst.resistencia_dano = 15;
+    monst.resistencia_dano = 12;
+    monst.pv = 35;
     //para facilitar caso precise
-    monst.pv = 45;
-
-    monst.pv_total = 25;
-    monst.dano = 10;
+    monst.pv_total = 35;
+    monst.dano = 9;
 
     char *nomePlayer;
 
     printf("Bem vindo ao jogo X.");
-    printf("Digite seu nome:");
+    printf("Digite seu nome:"/*(não coloque espaço)*/"");
     scanf("%s", &nomePlayer);
 
     printf("\nVoce acorda no meio de uma floresta.\nEsta frio. Nao sabe ha quanto tempo esta ali nem como chegou aquele lugar.\n");
@@ -388,6 +427,7 @@ int main(){
 
     printf("%s\n", imprimirTracos());
 
+    delay(3);
     // INICIO DAS DECISOES: VER ITENS
 
     int decisao1 = 0;
@@ -462,7 +502,6 @@ int main(){
 
         } else if(decisao1 == 6){
             // o while vai terminar
-
             printf("%s\n", imprimirTracos());
         } else {
             printf("\nOpcao invalida. Escolha um valor entre 1 e 6.\n\n");
@@ -564,7 +603,7 @@ int main(){
 	                delay(5);
 
 	                printf("%s\n", imprimirTracos());
-
+                    delay(1);
 	            } else if(decisao2a == 2){
 	                // FUGIR E MORRER
 	                printf("Desesperado e com medo, voce faz de tudo para fugir da criatura\n");
@@ -837,7 +876,7 @@ int main(){
             delay(1);
 
             printf("\nLivia: \"Voce veio me matar tambem?\"\n");
-            
+
             imprimirTracos();
 
             delay(2);
@@ -873,7 +912,7 @@ int main(){
                 printf("Voce percebe que Livia nao estava protegendo a casa.\n");
                 printf("Ela estava presa nela.\n");
                 delay(2);
-                
+
                 decisao5 = 1;
             } else if (decisao4 == 2){
                 imprimirTracos();
@@ -967,12 +1006,12 @@ int main(){
                     printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
                 }
 
-            } else{ 
+            } else{
                 printf("\nOpcao invalida. Escolha um valor entre 1 e 2");
             }
 
             if(decisao5 == 1){
-
+                // ENCONTRO FINAL
                 imprimirTracos();
 
                 printf("\nLivia olha para voce por alguns segundos.\n");

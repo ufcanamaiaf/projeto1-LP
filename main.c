@@ -849,7 +849,7 @@ int main(){
         int irAoPorao = 0;
 
         while (decisao3 < 1 || decisao3 > 3 ){
-            imprimirTracos;
+            printf("%s\n", imprimirTracos());
         	printf("1- Perguntar quem ela e.\n");
         	printf("2- Tentar fugir.\n");
         	printf("3- Apontar a arma para ela.\n");
@@ -859,7 +859,7 @@ int main(){
 
         	if(decisao3 == 1){
         		//PERGUNTAR QUEM ELA E
-                imprimirTracos;
+                printf("%s\n", imprimirTracos());
         		printf("Voce pergunta qual e o nome da garota.\n");
         		printf("Ela responde:\n");
         		printf("?: O meu nome e Livia.\n");
@@ -973,7 +973,7 @@ int main(){
             int decisao4;
             int decisao5;
 
-            imprimirTracos();
+            printf("%s\n", imprimirTracos());
 
             printf("Voce segue ate o porao...\n");
             delay(1);
@@ -1008,7 +1008,7 @@ int main(){
 
             printf("\nLivia: \"Voce veio me matar tambem?\"\n");
 
-            imprimirTracos();
+            printf("%s\n", imprimirTracos());
 
             delay(2);
 
@@ -1019,7 +1019,7 @@ int main(){
             scanf("%d", &decisao4);
 
             if(decisao4 == 1){ // vai pro encontro final em 2 ocasioes (se perguntar oq aconteceu, e se decidir abaixar a arma)
-                imprimirTracos();
+                printf("%s\n", imprimirTracos());
 
                 printf("\n%s: O que aconteceu com voce?\n", nomePlayer);
                 delay(1);
@@ -1046,7 +1046,7 @@ int main(){
 
                 decisao5 = 1;
             } else if (decisao4 == 2){
-                imprimirTracos();
+                printf("%s\n", imprimirTracos());
 
                 printf("\nVoce aponta a arma para Livia.\n");
                 delay(1);
@@ -1077,7 +1077,7 @@ int main(){
                 printf("\nVoce fica em duvida sobre o que fazer.\n");
                 delay(2);
 
-                imprimirTracos();
+                printf("%s\n", imprimirTracos());
                 int decisao4a;
 
                 printf("1- Abaixar a arma\n");
@@ -1088,7 +1088,7 @@ int main(){
                 scanf("%d", &decisao4a);
 
                 if(decisao4a == 1){
-                    imprimirTracos();
+                    printf("%s\n", imprimirTracos());
 
                     printf("\nVoce abaixa a arma.\n");
                     delay(1);
@@ -1131,7 +1131,7 @@ int main(){
 
                     printf("Voce esta morto, agente %s", nomePlayer);
                     delay(2);
-                    imprimirCreditos();
+                    printf("%s\n", imprimirTracos());
 
                 }else{
                     printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
@@ -1143,7 +1143,7 @@ int main(){
 
             if(decisao5 == 1){
                 // ENCONTRO FINAL
-                imprimirTracos();
+                printf("%s\n", imprimirTracos());
 
                 printf("\nLivia olha para voce por alguns segundos.\n");
                 delay(1);
@@ -1164,7 +1164,7 @@ int main(){
                 printf("Agora entende que sua missao nao sera tao simples quanto parecia.\n\n");
                 delay(2);
 
-                imprimirTracos();
+                printf("%s\n", imprimirTracos());
 
                 printf("\nO que voce vai fazer?\n");
                 printf("1- Matar Livia.\n");
@@ -1213,7 +1213,7 @@ int main(){
                     printf("\nVoce cumpriu sua missao, mas acabou libertando a entidade.\n");
                     delay(2);
 
-                    imprimirCreditos();
+                    printf("%s\n", imprimirTracos());
 
                 } else if(decisao5 == 2){
 
@@ -1251,13 +1251,13 @@ int main(){
                     printf("\nVoce consegue sair da casa.\n");
                     delay(2);
 
-                    imprimirTracos();
+                    printf("%s\n", imprimirTracos());
 
                     printf("\nFINAL - A MENINA\n");
                     printf("Voce salvou Livia, mas desobedeceu a Ordem.\n");
                     delay(2);
 
-                    imprimirCreditos();
+                    printf("%s\n", imprimirCreditos());
 
                 } else if(decisao5 == 3){
 
@@ -1279,13 +1279,13 @@ int main(){
                     printf("As luzes se apagam.\n");
                     delay(2);
 
-                    imprimirTracos();
+                    printf("%s\n", imprimirTracos());
 
                     printf("\nFINAL - TARDE DEMAIS\n");
                     printf("A entidade toma conta da casa e voce nao consegue impedir a manifestacao.\n");
                     delay(2);
 
-                    imprimirCreditos();
+                    printf("%s\n", imprimirCreditos());
 
                 } else {
 

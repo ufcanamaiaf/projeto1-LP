@@ -783,6 +783,10 @@ int main(){
 
 	    		if (decisao2b == 1){
 				//ENTRAR PELA PORTA DA FRENTE
+					printf("Voce se aproxima devagar, a casa é estranha, escura, velha, cheia de desenhos estranhos pelas paredes");
+					printf("Ao se aproximar da porta da frente, voce percebe que ha varias marcas de garras pela porta.");
+					printf("Voce percebe que a porta esta entreaberta, voce entra...")
+					
 	    			decisao2 = 3;
 	    			break;
 

@@ -115,6 +115,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
     int reduz_dano_ag;
     int chance2 = 0;
     int chance = 0;
+    int cura = 0;
 
     if(num_luta == 1){
         //ATIRAR
@@ -311,32 +312,32 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
                 dado = girar_teste();
 
                 if(dado >= 1 && dado <= 2){
-                    printf("voce faz um leve e rapido remendo para as pequenas feridas e logo volta a focar na batalha, voce recupera 3 pontos de vida");
+                    cura = 4;
+                    printf("voce faz um leve e rapido remendo para as pequenas feridas e logo volta a focar na batalha, voce recupera %d pontos de vida\n",cura);
                     delay(3);
                     printf("enquanto isso o monstro avanca mas voce esta preparado para esquivar\n\n");
                     delay(2);
-                    ag->pv += 4;
                     reduz_dano_ag = 6;
                 }
 
                 if(dado >= 3 && dado <= 5){
-                    printf("voce faz um otimo remendo que pode estancar uma ferida, voce recupera 5 pontos de vida\n");
+                    cura = 7;
+                    printf("voce faz um otimo remendo que pode estancar uma ferida, voce recupera %d pontos de vida\n",cura);
                     delay(3);
                     printf("enquanto isso o monstro avanca mas voce esta preparado para esquivar\n\n");
                     delay(2);
-                    ag->pv += 7;
                     reduz_dano_ag = 5;
-
                 }
 
                 if(dado == 6){
-                    printf("voce faz um otimo remendo improvisado com poucas coisas usaveis ao seu redor, voce recupera 7 pontos de vida\n");
+                    cura = 9;
+                    printf("voce faz um otimo remendo improvisado com poucas coisas usaveis ao seu redor, voce recupera %d pontos de vida\n", cura);
                     delay(3);
                     printf("enquanto isso o monstro , embora com dificuldade voce ainda consegue se esquivar\n\n");
                     delay(2);
                     reduz_dano_ag = 3;
-                    ag->pv += 9;
                 }
+                ag->pv += cura;
                 ataquemonstro(ag,mo,dano_bruto_ag = 0,num_luta,tatica,reduz_dano_ag);
                 if(ag->pv > ag->pv_total){
                     ag->pv == ag->pv_total;
@@ -488,17 +489,17 @@ int main(){
     persona.armadura = 6;
 
     persona.armas.nome = "Beretta 92FS";
-    persona.armas.dano = 6;
+    persona.armas.dano = 7;
     persona.armas.municao = 7;
 
     Monstro monst;
 
     monst.nome = "Zumbi de sangue";
     monst.resistencia_dano = 12;
-    monst.pv = 35;
+    monst.pv = 30;
     //para facilitar caso precise
-    monst.pv_total = 35;
-    monst.dano = 10;
+    monst.pv_total = 30;
+    monst.dano = 8;
 
     printf("Bem vindo ao jogo X.");
     printf("Digite seu nome:"/*(nao coloque espaco no nome)*/"");
@@ -930,7 +931,7 @@ int main(){
                         delay(2);
         				printf("A garota desaparece e a casa comeca a tremer. Voce percebe que o tiro nao atingiu ela. \n");
         				printf("Entao, escuta um barulho vindo do porao.");
-                        delay(1);
+                        delay(3);
 
                         irAoPorao = 1;
 
@@ -942,9 +943,11 @@ int main(){
 						printf("Voce abaixa a arma.\n");
 						printf("A garota desaparece pelo corredor.\n");
                         printf("A garota aparece por tras de voce e fala:\n");
+                        delay(3);
                         printf("\"Por favor nao va!\"\n");
                         printf("Ela corre e voce vai atras dela.\n");
                         printf("Voce percebe que ela esta indo para uma pequena passagem que te leva ao porao");
+                        delay(3);
 
                         irAoPorao = 1;
 
@@ -976,20 +979,20 @@ int main(){
             delay(1);
 
             printf("Ao descer as escadas, voce encontra varios objetos pertencentes a antiga equipe espalhados pelo chao.\n");
-            delay(1);
+            delay(2);
 
             printf("No centro do local existe um circulo desenhado no chao, com a fotografia de Livia no meio.\n");
 
             printf("Ao lado, esta o corpo de um dos agentes. Voce o conhecia.\n");
             printf("O nome dele era Aaron, um atirador de elite importante para a agencia.\n\n");
-            delay(1);
+            delay(4);
 
             printf("\nVoce encontra um documento:\n");
-            delay(1);
+            delay(4);
 
             printf("\"O pai tentou trazer sua esposa de volta, apos morrer em um tragico acidente.\n");
             printf("Para isso, sacrificou a propria filha.\"\n");
-            delay(2);
+            delay(4);
 
             printf("\nVoce finalmente entende o que aconteceu...\n");
             delay(1);
@@ -1029,7 +1032,7 @@ int main(){
 
                 printf("Livia: Meu pai fez um ritual. Ele queria trazer minha mae de volta.\n");
                 printf("Mas precisava de alguem para oferecer em troca.\n");
-                delay(2);
+                delay(3);
 
                 printf("\n%s: E ele escolheu voce...\n", nomePlayer);
                 delay(1);
@@ -1039,7 +1042,7 @@ int main(){
 
                 printf("Voce percebe que Livia nao estava protegendo a casa.\n");
                 printf("Ela estava presa nela.\n");
-                delay(2);
+                delay(3);
 
                 decisao5 = 1;
             } else if (decisao4 == 2){
@@ -1077,8 +1080,8 @@ int main(){
                 imprimirTracos();
                 int decisao4a;
 
-                printf("1- Abaixar a arma");
-                printf("2- Atirar");
+                printf("1- Abaixar a arma\n");
+                printf("2- Atirar\n");
 
 
                 printf("Escolha: ");

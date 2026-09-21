@@ -501,7 +501,7 @@ int main(){
     monst.pv_total = 30;
     monst.dano = 8;
 
-    printf("Bem vindo ao jogo X.");
+    printf("Bem vindo ao jogo X.\n");
     printf("Digite seu nome:"/*(nao coloque espaco no nome)*/"");
     scanf("%s", &nomePlayer);
     delay(1);
@@ -768,7 +768,7 @@ int main(){
 
 			printf("%s\n", imprimirTracos());
 
-			int decisao2b;
+			int decisao2b = 0;
 
 			while (decisao2b < 1 || decisao2b > 4) {
 
@@ -783,9 +783,9 @@ int main(){
 
 	    		if (decisao2b == 1){
 				//ENTRAR PELA PORTA DA FRENTE
-					printf("Voce se aproxima devagar, a casa é estranha, escura, velha, cheia de desenhos estranhos pelas paredes");
+					printf("Voce se aproxima devagar, a casa estranha, escura, velha, cheia de desenhos estranhos pelas paredes");
 					printf("Ao se aproximar da porta da frente, voce percebe que ha varias marcas de garras pela porta.");
-					printf("Voce percebe que a porta esta entreaberta, voce entra...")
+					printf("Voce percebe que a porta esta entreaberta, voce entra...");
 					
 	    			decisao2 = 3;
 	    			break;

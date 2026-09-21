@@ -788,11 +788,11 @@ int main(){
 				//ENTRAR PELA PORTA DA FRENTE
 					printf("Voce se aproxima devagar.\n");
                     delay(2);
-                    printf("A casa estranha, escura, velha, cheia de desenhos estranhos pelas paredes");
+                    printf("A casa estranha, escura, velha, cheia de desenhos estranhos pelas paredes\n");
                     delay(2);
-					printf("Ao se aproximar da porta da frente, voce percebe que ha varias marcas de garras pela porta.");
+					printf("Ao se aproximar da porta da frente, voce percebe que ha varias marcas de garras pela porta.\n");
                     delay(2);
-					printf("Voce percebe que a porta esta entreaberta, voce entra...");
+					printf("Voce percebe que a porta esta entreaberta, voce entra...\n");
 					
 	    			decisao2 = 3;
 	    			break;

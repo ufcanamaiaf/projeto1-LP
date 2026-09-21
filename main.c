@@ -3,8 +3,6 @@
 #include <unistd.h>
 #include <time.h>
 
-char *nomePlayer;
-
 int d6(){
     return (rand() % 6) + 1;
 }
@@ -501,10 +499,8 @@ int main(){
     monst.pv_total = 30;
     monst.dano = 8;
 
-    printf("Bem vindo ao jogo X.\n");
-    printf("Digite seu nome:"/*(nao coloque espaco no nome)*/"");
-    scanf("%s", &nomePlayer);
-    delay(1);
+    printf("Nao deixe que ela saia...\n");
+    delay(2);
 
     printf("\nVoce acorda no meio de uma floresta.\nEsta frio. Voce e um agente da ordem, e veio cumprir uma missao.\n");
     delay(3);
@@ -710,9 +706,9 @@ int main(){
                     delay(2);
 
                     printf("Era um agente da Ordem.\n\n");
-                    delay(4);
+                    delay(2);
                     printf("Depois de alguns minutos tentando entender o que aconteceu, voce decide entrar na casa pela porta da frente e enfim investigar o interior da casa");
-	                delay(5);
+	                delay(2);
 
 	                printf("%s\n", imprimirTracos());
                     delay(1);
@@ -725,18 +721,18 @@ int main(){
 
 	                printf("E tarde demais, voce deixou tudo para tras. Sua casa, sua familia, e voce sabe o que vai acontecer.\n");
 	                printf("Voce vai morrer aqui\n\n");
-	                delay(3);
+	                delay(2);
 
 	                printf("O seu radio comeca a transmitir uma voz angelical, doce e sutil\n");
 	                printf("E uma crianca, e ela te diz:\n");
 
-	                delay(4);
-	                printf("- Voce nao deveria ter vindo.\n\n");
+	                delay(2);
+	                printf("?: Voce nao deveria ter vindo.\n\n");
 	                delay(2);
 
 	                printf("As arvores voltam a mexer violentamente atras de voce, voce percebe que nao esta mais sozinho. \n");
 	                printf("Assim como voce percebeu que o caminho que escolheu no inicio acabou de leva-lo a morte.\n\n");
-	                delay(5);
+	                delay(3);
 
 	                printf("O Zumbi de Sangue te alcanca.\n\n");
 	                delay(2);
@@ -759,20 +755,27 @@ int main(){
 			delay(2);
 			printf("Pequenas pegadas, provavelmente de uma crianca.\n");
             delay(2);
-			printf("Voce segue andando em direcao ao que parece ser os fundos da casa, la ha uma porta e perto dela uma janela quebrada.\n\n"); delay(3);
+			printf("Voce segue andando em direcao ao que parece ser os fundos da casa.\n"); 
+            delay(2);
+            printf("La, ha uma porta e perto dela uma janela quebrada.\n\n");
+            delay(2);
 
-			printf("Perto da janela tem uma caixa velha de madeira enterrada ate a metade.\n"); delay(2);
-			printf("Ao abri-la voce acha um medalhao e um papel manchado.\n");
-			printf("Voce pega o medalhao primeiro, nele ha uma foto de uma garota pequena e na parte de tras esta gravado \"Livia - 8 anos\"\n");delay(2);
-			printf("Voce solta o medalhao e pega o papel, nele esta escrito \"Ela nao nasceu assim\"\n");delay(2);
+			printf("Perto da janela tem uma caixa velha de madeira, enterrada ate a metade.\n"); 
+            delay(2);
+			printf("Ao abri-la, voce acha um medalhao e um papel manchado.\n");
+            delay(2);
+			printf("Voce pega o medalhao primeiro.\n");
+            delay(2);
+            printf("Nele ha uma foto de uma garota pequena. Na parte de tras esta gravado: \"Livia - 8 anos\"\n");
+            delay(2);
+			printf("Voce solta o medalhao e pega o papel, nele esta escrito: \"Ela nao nasceu assim\"\n");
+            delay(2);
 
 			printf("%s\n", imprimirTracos());
 
 			int decisao2b = 0;
 
 			while (decisao2b < 1 || decisao2b > 4) {
-
-				printf("\nQual sera seu proximo passo?\n");
 				printf("1- Entrar pela porta da frente\n");
 				printf("2- Entrar pela porta dos fundos\n");
 				printf("3- Continuar investigando os arredores da casa\n");
@@ -783,8 +786,12 @@ int main(){
 
 	    		if (decisao2b == 1){
 				//ENTRAR PELA PORTA DA FRENTE
-					printf("Voce se aproxima devagar, a casa estranha, escura, velha, cheia de desenhos estranhos pelas paredes");
+					printf("Voce se aproxima devagar.\n");
+                    delay(2);
+                    printf("A casa estranha, escura, velha, cheia de desenhos estranhos pelas paredes");
+                    delay(2);
 					printf("Ao se aproximar da porta da frente, voce percebe que ha varias marcas de garras pela porta.");
+                    delay(2);
 					printf("Voce percebe que a porta esta entreaberta, voce entra...");
 					
 	    			decisao2 = 3;
@@ -792,20 +799,38 @@ int main(){
 
 				} else if (decisao2b == 2){
 				//ENTRAR PELA PORTA DOS FUNDOS
-					printf("Voce entra pela porta dos fundos. Perto da porta, encontra marcas de sangue seco no chao e um pedaco de tecido preso em uma lasca da madeira.\n");
+					printf("Voce entra pela porta dos fundos.\n");
+                    delay(2);
+                    printf("Perto da porta, encontra marcas de sangue seco no chao e um pedaco de tecido preso em uma lasca da madeira.\n");
+                    delay(2);
 					printf("Ao pega-lo, percebe que e parte do uniforme de um agente da Ordem.\n");
-					printf("Junto do tecido ha um pequeno bilhete: \"Nao confie no que ela parece ser.\". Voce guarda o bilhete e continua andando pela casa.\n");
+                    delay(2);
+					printf("Junto do tecido ha um pequeno bilhete: \"Nao confie no que ela parece ser.\". \n");
+                    delay(2);
+
 
 					decisao2 = 3;
 					break;
 
 				} else if (decisao2b == 3){
 				//CONTINUAR INVESTIGANDO
-					printf("Ao se distanciar um pouco da casa, voce ve uma arvore seca, o que parece estranho comparado a grande mata verde e densa da floresta.\n");
-					printf("Voce caminha ate a arvore seca, chegando mais perto voce percebe que ha marcas estranhas entalhadas na arvore, iguais as que tem perto da casa.\n");
-					printf("Perto da arvore tem uma pequena mesa de madeira, ela parece estar la ha bastante tempo, esta velha e com a madeira rachada, em cima dela ha algumas velas velhas, alguns pedacos de vidro e uma velha fotografia.\n");
-					printf("Na fotografia, tem a menina da foto anterior, Livia, ela aparece sorridente ao lado de um homem e uma mulher bem parecidos com ela, seus pais.\n");
+					printf("Ao se distanciar um pouco da casa, voce ve uma arvore seca. \n");
+                    printf("O que parece estranho comparado a grande mata verde e densa da floresta.\n");
+                    delay(3);
+                    printf("Voce caminha ate a arvore seca.\n");
+                    delay(2);
+                    printf("Chegando mais perto voce percebe que ha marcas estranhas entalhadas na arvore, iguais as que tem perto da casa.");
+                    delay(2);
+					printf("Perto da arvore tem uma pequena mesa de madeira.\n");
+                    delay(2);
+                    printf("Ela parece estar la ha bastante tempo, esta velha e com a madeira rachada, em cima dela ha algumas velas velhas, alguns pedacos de vidro e uma velha fotografia.\n");
+                    delay(2);
+					printf("Na fotografia, tem a menina da foto anterior, Livia.\n");
+                    delay(2);
+                    printf("Ela aparece sorridente ao lado de um homem e uma mulher bem parecidos com ela, voce supoe que sao seus pais.\n");
+                    delay(2);
 					printf("Atras da foto esta escrito: \"O ritual comecou na noite em que Livia se foi\".");
+                    delay(2);
 					printf("Voce volta para a casa e decide entrar nela.\n\n");
 
 					printf("%s\n", imprimirTracos());
@@ -816,8 +841,13 @@ int main(){
 				} else if (decisao2b == 4){
 				//IR EMBORA
 					printf("Voce tenta sair da floresta, comeca a correr, mas o radio irrompe o silencio.\n");
-					printf("... \"Voce sabe o que aconteceu aqui. Nao pode simplesmente ir embora.\" ...\n");
-					printf("Mesmo assim, voce continuar correndo e tentando achar uma saida, mas depois de algum tempo percebe que sempre retorna para o mesmo lugar: em frente a casa abandonada.\n");
+                    delay(2);
+					printf("?: Voce sabe o que aconteceu aqui. Nao pode simplesmente ir embora.\n");
+                    delay(2);
+					printf("Mesmo assim, voce continuar correndo e tentando achar uma saida.\n");
+                    delay(2);
+                    printf("Mas depois de algum tempo percebe que sempre retorna para o mesmo lugar: em frente a casa abandonada.\n");
+                    delay(2);
 					printf("Juntando toda a sua coragem, voce decide entao entrar na casa.\n");
 
 					printf("%s\n", imprimirTracos());
@@ -826,7 +856,7 @@ int main(){
 					break;
 
 				} else {
-					printf("Decisao invalida! Escolha um valor entre 1 e 4\n");
+					printf("Opcao invalida. Escolha um valor entre 1 e 4\n");
 				}
 			}
 		} else if (decisao2 == 3){
@@ -839,15 +869,24 @@ int main(){
     if(decisao2 == 3){
         // ENTRAR NA CASA
 
-        printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n"); delay(2);
-        printf("Ha moveis antigos, fotografias na parede e brinquedos espalhados pelo chao\n");delay(2);
-        printf("No corredor da casa uma das fotografias se destaca, nela contem uma familia: pai, mae e filha.\n"); delay(3);
-        printf("Voce escuta um barulho de algo correndo no andar de cima!\n"); delay(2);
-        printf("Logo depois, escuta uma forte batida!\n"); delay(2);
-        printf("Um silencio ensurdecedor toma conta da casa...\n");delay(2);
-        printf("Entao uma voz diz:...\n"); delay(3);
-        printf("?: Voce demorou.\n"); delay(3);
-        printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n"); delay(2);
+        printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n"); 
+        delay(2);
+        printf("Ha moveis antigos, fotografias na parede e brinquedos espalhados pelo chao\n");
+        delay(2);
+        printf("No corredor da casa uma das fotografias se destaca, nela contem uma familia: pai, mae e filha.\n"); 
+        delay(2);
+        printf("Voce escuta um barulho de algo correndo no andar de cima!\n"); 
+        delay(2);
+        printf("Logo depois, escuta uma forte batida!\n"); 
+        delay(2);
+        printf("Um silencio ensurdecedor toma conta da casa...\n");
+        delay(2);
+        printf("Entao, voce ouve uma voz...\n"); 
+        delay(2);
+        printf("?: Voce demorou.\n"); 
+        delay(2);
+        printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n"); 
+        delay(2);
 
         int decisao3 = 0;
         int irAoPorao = 0;
@@ -871,15 +910,15 @@ int main(){
         		printf("A menina permanece parada. Depois de alguns segundos, pergunta:\n");
         		printf("Livia: Voce veio terminar o trabalho deles?\n");
         		printf("Ela olha para o seu simbolo da Ordem no uniforme. Voce nao entende o que ela quer dizer.\n");
-        		printf("%s: Quem sao eles?\n", nomePlayer);
+        		printf("Agente: Quem sao eles?\n");
                 delay(3);
 
         		printf("Livia: Os homens que vieram antes de voce, eles tambem fizeram perguntas.\n");
-                delay(1);
+                delay(2);
         		printf("Livia: Eles estavam procurando meu pai...\n");
                 delay(2);
 
-                printf("%s: Onde ele esta?\n", nomePlayer);
+                printf("Agente: Onde ele esta?\n");
                 delay(2);
 
                 irAoPorao = 1;
@@ -1025,7 +1064,7 @@ int main(){
             if(decisao4 == 1){ // vai pro encontro final em 2 ocasioes (se perguntar oq aconteceu, e se decidir abaixar a arma)
                 printf("%s\n", imprimirTracos());
 
-                printf("\n%s: O que aconteceu com voce?\n", nomePlayer);
+                printf("\nAgente: O que aconteceu com voce?\n");
                 delay(1);
 
                 printf("\nLivia permanece em silencio por alguns segundos.\n");
@@ -1038,7 +1077,7 @@ int main(){
                 printf("Mas precisava de alguem para oferecer em troca.\n");
                 delay(3);
 
-                printf("\n%s: E ele escolheu voce...\n", nomePlayer);
+                printf("\nAgente: E ele escolheu voce...\n");
                 delay(1);
 
                 printf("Livia: Sim. Eu fui o sacrificio.\n");
@@ -1133,7 +1172,7 @@ int main(){
                     printf("A sombra avanca em sua direcao. E dessa vez, nao ha para onde fugir...\n");
                     delay(2);
 
-                    printf("Voce esta morto, agente %s", nomePlayer);
+                    printf("Voce esta morto, agente.");
                     delay(2);
                     printf("%s\n", imprimirTracos());
 

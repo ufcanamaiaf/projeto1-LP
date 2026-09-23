@@ -472,6 +472,37 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
 
     return 0;
     }
+    
+    //Add inventário
+    typedef struct inventario{
+    	char* nomeObjeto;
+    	int pontos;
+    	struct inventario * prox;
+	} inventario;
+	
+	inventario *inicio = NULL;
+	inventario *fim = NULL;
+	int tam = 0;
+	
+	//Lista do inventário
+	void addNovoItem (char* nomeObjeto, int pontos){
+    
+    inventario *novoItem = malloc(sizeof(inventario));
+    novoItem->nomeObjeto = nomeObjeto;
+    novo->pontos = pontos;
+    novo->prox = NULL;
+
+    if(inicio == NULL){
+        inicio = novoItem;
+        fim = novoItem;
+        tam++;
+    }else{
+        novoItem->prox = inicio;
+        inicio = novoItem;
+        tam++;
+    }
+
+}
 
 int main(){
     srand(time(NULL));

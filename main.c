@@ -3,12 +3,8 @@
 #include <unistd.h>
 #include <time.h>
 
-int d6(){
-    return (rand() % 6) + 1;
-}
-
 void delay(int segundos){
-    segundos;
+    segundos = 0;
     sleep(segundos);
 }
 // nessa funcao, para colocar um intervalo de tempo em segundos entre a execucao de um texto/funcao e outro, como por exemplo 1 segundo, precisa escrever 'delay(1)'
@@ -55,8 +51,8 @@ typedef struct{
 int girar_teste(){
     printf("\nGirando dado...\n");
     delay(3);
-    int dado = d6();
-    printf("Seu dado resultou em %d\n", dado);
+    int dado = (rand() % 6) + 1;
+    printf("O dado resultou em %d\n", dado);
     delay(2);
     return dado;
 }
@@ -65,8 +61,14 @@ int girar_teste(){
 void ataquemonstro(Agente *ag, Monstro *mo, int dano_recebido, int num_luta, int tatica, int reduz_dano_ag){
     if(mo->pv > 0){
         if(num_luta == 1){
-            if ((dano_recebido >= 12 && mo->resistencia_dano > 0) || (dano_recebido < 12 && mo->resistencia_dano <= 0) || (dano_recebido < 12 && mo->resistencia_dano > 0)) {
-                int dado_mo = d6();
+            if ((dano_recebido >= 13 && mo->resistencia_dano > 0) || (dano_recebido < 13 && mo->resistencia_dano <= 0) || (dano_recebido < 13 && mo->resistencia_dano > 0)) {
+                if(mo->pv <= 15){
+                    printf("zumbi de sangue parece bem mais agressivo, e melhor tomar cuidado");
+                    delay(1);
+                }
+                printf("\nO zumbi de sangue avanca e tenta desferir um golpe.\n");
+                delay(1);
+                int dado_mo = girar_teste();
                 int dano_bruto_mo;
                 if(mo->pv <= 15){
                     dano_bruto_mo  = dado_mo + (mo->dano + 3) - reduz_dano_ag;
@@ -84,16 +86,10 @@ void ataquemonstro(Agente *ag, Monstro *mo, int dano_recebido, int num_luta, int
                 }
                 ag->pv -= dano_sofrido;
 
-                if(mo->pv <= 15){
-                    printf("zumbi de sangue parece bem mais agressivo, e melhor tomar cuidado");
-                    delay(1);
-                }
-                printf("\nO zumbi de sangue avanca e tenta desferir um golpe.\n");
-                delay(1);
                 printf("Voce recebe %d de dano.\n\n", dano_sofrido);
                 delay(3);
             }
-            else if(dano_recebido >= 12 && mo->resistencia_dano <= 0){
+            else if(dano_recebido >= 13 && mo->resistencia_dano <= 0){
                 printf("Criatura esta desnorteada por esse turno\n\n");
                 delay(2);
             }
@@ -376,6 +372,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
 int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
     int fraqueza = 0;
     int dado;
+    int pontuacao;
     while(mo->pv > 0){
         if(ag->pv > 0 && ag->sanidade > 0){
             printf("\n\n========== AGENTE ==========\n");
@@ -506,7 +503,7 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
 
 int main(){
     srand(time(NULL));
-    // PV sao pontos de vida, para voce testar, caso precise passar pela rota da luta(quando abandona floresta) recomendo trocar a pontuacao de vida do zumbi para 1 antes da execucao "monst.pv = 1;"
+    // PV sao pontos de vida, para voce testar, caso precise passar pela rota da luta(quando abandona floresta) recomendo trocar a pontuacao de vida do zumbi para 1 antes da execucao "zumbisangue.pv = 1;"
     Agente persona;
     persona.vigor = 2;
     persona.forca = 2;
@@ -514,21 +511,21 @@ int main(){
     persona.intelecto = 2;
     persona.pv_total = 25;
     persona.pv = 25;
-    persona.sanidade = 20;
+    persona.sanidade = 16;
     persona.armadura = 6;
 
     persona.armas.nome = "Beretta 92FS";
     persona.armas.dano = 7;
     persona.armas.municao = 7;
 
-    Monstro monst;
+    Monstro zumbisangue;
 
-    monst.nome = "Zumbi de sangue";
-    monst.resistencia_dano = 12;
-    monst.pv = 30;
+    zumbisangue.nome = "Zumbi de sangue";
+    zumbisangue.resistencia_dano = 12;
+    zumbisangue.pv = 25;
     //para facilitar caso precise
-    monst.pv_total = 30;
-    monst.dano = 8;
+    zumbisangue.pv_total = 25;
+    zumbisangue.dano = 8;
 
     printf("Nao deixe que ela saia...\n");
     delay(2);
@@ -706,7 +703,7 @@ int main(){
 
 	            if(decisao2a == 1){
 	                // LUTAR COM O ZUMBI(incompleto)
-	                decisao2 = batalha(&persona,&monst,1,decisao2);
+	                decisao2 = batalha(&persona,&zumbisangue,1,decisao2);
 	                if(decisao2 != 3){
                         break;
 	                }
@@ -787,12 +784,12 @@ int main(){
 			delay(2);
 			printf("Pequenas pegadas, provavelmente de uma crianca.\n");
             delay(2);
-			printf("Voce segue andando em direcao ao que parece ser os fundos da casa.\n"); 
+			printf("Voce segue andando em direcao ao que parece ser os fundos da casa.\n");
             delay(2);
             printf("La, ha uma porta e perto dela uma janela quebrada.\n\n");
             delay(2);
 
-			printf("Perto da janela tem uma caixa velha de madeira, enterrada ate a metade.\n"); 
+			printf("Perto da janela tem uma caixa velha de madeira, enterrada ate a metade.\n");
             delay(2);
 			printf("Ao abri-la, voce acha um medalhao e um papel manchado.\n");
             delay(2);
@@ -825,7 +822,7 @@ int main(){
 					printf("Ao se aproximar da porta da frente, voce percebe que ha varias marcas de garras pela porta.\n");
                     delay(2);
 					printf("Voce percebe que a porta esta entreaberta, voce entra...\n");
-					
+
 	    			decisao2 = 3;
 	    			break;
 
@@ -901,23 +898,23 @@ int main(){
     if(decisao2 == 3){
         // ENTRAR NA CASA
         imprimirTracos;
-        printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n"); 
+        printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n");
         delay(2);
         printf("Ha moveis antigos, fotografias na parede e brinquedos espalhados pelo chao\n");
         delay(2);
-        printf("No corredor da casa uma das fotografias se destaca, nela contem uma familia: pai, mae e filha.\n\n"); 
+        printf("No corredor da casa uma das fotografias se destaca, nela contem uma familia: pai, mae e filha.\n\n");
         delay(2);
-        printf("Voce escuta um barulho de algo correndo no andar de cima!\n"); 
+        printf("Voce escuta um barulho de algo correndo no andar de cima!\n");
         delay(2);
-        printf("Logo depois, escuta uma forte batida\n"); 
+        printf("Logo depois, escuta uma forte batida\n");
         delay(2);
         printf("Um silencio ensurdecedor toma conta da casa...\n\n");
         delay(2);
-        printf("Entao, voce ouve uma voz...\n"); 
+        printf("Entao, voce ouve uma voz...\n");
         delay(2);
-        printf("?: Voce demorou.\n"); 
+        printf("?: Voce demorou.\n");
         delay(2);
-        printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n"); 
+        printf("Voce sobe as escadas e no final do corredor tem uma menina parada contra a parede, vestindo um vestido branco e sujo.\n");
         delay(2);
 
         int decisao3 = 0;

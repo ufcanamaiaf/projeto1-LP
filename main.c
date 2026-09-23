@@ -470,7 +470,7 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
     return 0;
     }
     
-    //Add inventário
+    //Add inventï¿½rio
     typedef struct inventario{
     	char* nomeObjeto;
     	int pontos;
@@ -481,13 +481,13 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
 	inventario *fim = NULL;
 	int tam = 0;
 	
-	//Lista do inventário
+	//Lista do inventï¿½rio
 	void addNovoItem (char* nomeObjeto, int pontos){
     
     inventario *novoItem = malloc(sizeof(inventario));
     novoItem->nomeObjeto = nomeObjeto;
-    novo->pontos = pontos;
-    novo->prox = NULL;
+    novoItem->pontos = pontos;
+    novoItem->prox = NULL;
 
     if(inicio == NULL){
         inicio = novoItem;

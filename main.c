@@ -424,8 +424,13 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
             printf("Mas, ja nao ha mais tempo para arrependimentos.\n\n");
             delay(3);
             printf("Voce esta morto, agente");
+            delay(3);
+
+            printf("------------ FINAL 1: Morte Infeliz ------------\n\n");
+            printf("Voce lutou ate o seu ultimo suspiro, mas nao foi suficiente\n\n");
+            printf("------------------------------------------------\n\n");
             delay(5);
-            printf("%s\n", imprimirTracos());
+
             printf("%s\n", imprimirCreditos());
             break;
 
@@ -433,12 +438,16 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
         //MORTE POR ZERAR SANIDADE
         else if(ag->sanidade <= 0){
             printf("\nVoce nao aguenta mais a pressao de continuar lutando e enlouquece, enquanto isso a criatura aproveita a chance para atacar e então seu corpo é devorado pelo zumbi\n");
-            delay(4);
-            printf("assim a criatura matou o agente em meio à escuridão entre as árvores, enquanto a casa continua esperando sua próxima vítima...");
+            
             delay(3);
 
-            printf("%s\n", imprimirTracos());
+            printf("-------------- FINAL 2: Loucura ---------------\n\n");
+            printf("Voce enlouquece completamente, dando abertura para um golpe final.\n\n");
+            printf("------------------------------------------------\n\n");
+            delay(5);
+
             printf("%s\n", imprimirCreditos());
+
             break;
 
         }
@@ -450,7 +459,7 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
         printf("Por alguns segundos, ela permanece olhando para voce.\n");
         delay(2);
 
-        printf("Entao, seu corpo finalmente perde a forca e cai sobre a neve.\n");
+        printf("Entao, seu corpo finalmente perde a forca e cai.\n");
         delay(2);
 
         printf("O silencio volta a tomar conta da floresta.\n");
@@ -626,12 +635,11 @@ int main(){
 
     printf("Na sua frente, ha uma grande casa abandonada.\n");
     printf("Voce se lembra bem disso: e agora que a sua missao comeca.\n");
-    imprimirTracos;
+    printf("%s\n", imprimirTracos());
     delay(2);
 
     int decisao2 = 0;
     while (decisao2 < 1 || decisao2 > 3){
-        imprimirTracos;
         printf("1- Abandonar a floresta\n");
         printf("2- Analisar o perimetro\n");
         printf("3- Entrar na casa\n");
@@ -707,6 +715,7 @@ int main(){
 	                if(decisao2 != 3){
                         break;
 	                }
+
 	                printf("\nDepois de uma longa e brutal batalha, voce permanece alguns segundos parado, tentando recuperar o folego.\n");
                     delay(2);
 
@@ -768,9 +777,15 @@ int main(){
 
 	                printf("Voce esta morto, agente.");
 
-	                printf("%s\n", imprimirTracos());
+                    delay(3);
+
+                    printf("------------ FINAL 3: Morte Covarde ------------\n\n");
+                    printf("Voce tentou fugir do zumbi de sangue, e ignorou sua missao\n\n");
+                    printf("------------------------------------------------\n\n");
 
 	                delay(5);
+
+                    printf("%s\n", imprimirCreditos());
 	            } else {
 	                printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
 	            }
@@ -837,7 +852,6 @@ int main(){
 					printf("Junto do tecido ha um pequeno bilhete: \"Nao confie no que ela parece ser.\". \n");
                     delay(2);
 
-
 					decisao2 = 3;
 					break;
 
@@ -897,7 +911,6 @@ int main(){
 
     if(decisao2 == 3){
         // ENTRAR NA CASA
-        imprimirTracos;
         printf("Voce abre a porta da casa e observa que ela esta completamente escura.\n");
         delay(2);
         printf("Ha moveis antigos, fotografias na parede e brinquedos espalhados pelo chao\n");
@@ -921,7 +934,6 @@ int main(){
         int irAoPorao = 0;
 
         while (decisao3 < 1 || decisao3 > 3 ){
-            printf("%s\n", imprimirTracos());
         	printf("1- Perguntar quem ela e.\n");
         	printf("2- Tentar fugir.\n");
         	printf("3- Apontar a arma para ela.\n");
@@ -931,8 +943,7 @@ int main(){
 
         	if(decisao3 == 1){
         		//PERGUNTAR QUEM ELA E
-                printf("%s\n", imprimirTracos());
-        		printf("Voce pergunta qual e o nome da garota.\n");
+        		printf("Agente: Qual e o seu nome?\n");
         		printf("Ela responde:\n");
         		printf("?: O meu nome e Livia.\n\n");
                 delay(3);
@@ -953,6 +964,7 @@ int main(){
                 printf("Ela aponta em direcao ao porao.\n");
                 delay(1);
                 printf("Voce sabe para onde deve ir agora.\n");
+                printf("%s\n", imprimirTracos());
 
                 irAoPorao = 1;
 
@@ -960,7 +972,6 @@ int main(){
 
 			} else if(decisao3 == 2){
 				//TENTAR FUGIR
-
 				printf("Voce desce rapidamente as escadas. A porta da frente esta aberta. \n");
 				printf("Voce corre em direcao a ela.\n\n");
                 delay(3);
@@ -974,6 +985,7 @@ int main(){
                 delay(2);
 				printf("Ela corre e voce vai atras dela.\n");
                 printf("Voce percebe que ela esta indo para uma pequena passagem que te leva ao porao\n");
+                printf("%s\n", imprimirTracos());
 
                 irAoPorao = 1;
 
@@ -981,7 +993,6 @@ int main(){
 
 			}else if(decisao3 == 3){
 				//APONTAR A ARMA PARA ELA
-
 				printf("Voce aponta a arma para a garota.\n");
 				delay(3);
 				printf("Ela olha para a arma, mas nao demonstra medo.\n");
@@ -991,7 +1002,6 @@ int main(){
 				int decisao3a = 0;
 
         		while (decisao3a < 1 || decisao3a > 2 ){
-                    imprimirTracos();
         			printf("1- Disparar a arma.\n");
         			printf("2- Abaixar a arma.\n");
 
@@ -1000,7 +1010,6 @@ int main(){
 
         			if(decisao3a == 1){
         				//DISPARAR A ARMA
-                        imprimirTracos();
         				printf("Voce dispara a arma.\n");
                         delay(2);
         				printf("A garota desaparece e a casa comeca a tremer. Voce percebe que o tiro nao atingiu ela. \n");
@@ -1009,13 +1018,14 @@ int main(){
                         printf("Voce sabe para onde deve ir agora.");
                         delay(3);
 
+                        printf("%s\n", imprimirTracos());
+
                         irAoPorao = 1;
 
         				break;
 
 					} else if (decisao3a == 2){
 						//ABAIXAR A ARMA
-                        imprimirTracos();
 						printf("Voce abaixa a arma.\n");
 						printf("A garota desaparece pelo corredor.\n");
                         printf("A garota aparece por tras de voce e fala:\n");
@@ -1025,6 +1035,8 @@ int main(){
                         printf("Voce percebe que ela esta indo para uma pequena passagem que te leva ao porao");
                         printf("Voce sabe para onde deve ir agora.");
                         delay(3);
+
+                        printf("%s\n", imprimirTracos());
 
                         irAoPorao = 1;
 
@@ -1050,8 +1062,6 @@ int main(){
             int decisao4;
             int decisao5;
 
-            printf("%s\n", imprimirTracos());
-
             printf("Voce segue ate o porao...\n");
             delay(1);
 
@@ -1063,6 +1073,8 @@ int main(){
             printf("Ao lado, esta o corpo de um dos agentes. Voce o conhecia.\n");
             printf("O nome dele era Aaron, um atirador de elite importante para a agencia.\n\n");
             delay(4);
+
+            printf("%s\n", imprimirTracos());
 
             printf("\nVoce encontra um documento:\n");
             delay(4);
@@ -1096,8 +1108,6 @@ int main(){
             scanf("%d", &decisao4);
 
             if(decisao4 == 1){ // vai pro encontro final em 2 ocasioes (se perguntar oq aconteceu, e se decidir abaixar a arma)
-                printf("%s\n", imprimirTracos());
-
                 printf("\nAgente: O que aconteceu com voce?\n");
                 delay(1);
 
@@ -1119,12 +1129,11 @@ int main(){
 
                 printf("Voce percebe que Livia nao estava protegendo a casa.\n");
                 printf("Ela estava presa nela.\n");
+                printf("%s\n", imprimirTracos());
                 delay(3);
 
                 decisao5 = 1;
             } else if (decisao4 == 2){
-                printf("%s\n", imprimirTracos());
-
                 printf("\nVoce aponta a arma para Livia.\n");
                 delay(1);
 
@@ -1155,6 +1164,7 @@ int main(){
                 delay(2);
 
                 printf("%s\n", imprimirTracos());
+
                 int decisao4a;
 
                 printf("1- Abaixar a arma\n");
@@ -1165,8 +1175,6 @@ int main(){
                 scanf("%d", &decisao4a);
 
                 if(decisao4a == 1){
-                    printf("%s\n", imprimirTracos());
-
                     printf("\nVoce abaixa a arma.\n");
                     delay(1);
 
@@ -1208,7 +1216,14 @@ int main(){
 
                     printf("Voce esta morto, agente.");
                     delay(2);
-                    printf("%s\n", imprimirTracos());
+
+                    printf("------------ FINAL 4: O Erro -------------------\n\n");
+                    printf("Voce tentou fugir do zumbi de sangue, e ignorou sua missao\n\n");
+                    printf("------------------------------------------------\n\n");
+
+                    delay(5);
+
+                    printf("%s\n", imprimirCreditos());
 
                 }else{
                     printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n");
@@ -1220,8 +1235,6 @@ int main(){
 
             if(decisao5 == 1){
                 // ENCONTRO FINAL
-                printf("%s\n", imprimirTracos());
-
                 printf("\nLivia olha para voce por alguns segundos.\n");
                 delay(1);
 
@@ -1241,9 +1254,6 @@ int main(){
                 printf("Agora entende que sua missao nao sera tao simples quanto parecia.\n\n");
                 delay(2);
 
-                printf("%s\n", imprimirTracos());
-
-                printf("\nO que voce vai fazer?\n");
                 printf("1- Matar Livia.\n");
                 printf("2- Tentar salvar Livia.\n");
                 printf("3- Nao fazer nada.\n");
@@ -1252,7 +1262,6 @@ int main(){
                 scanf("%d", &decisao5);
 
                 if(decisao5 == 1){
-
                     printf("\nVoce decide cumprir sua missao.\n");
                     delay(1);
 
@@ -1287,10 +1296,13 @@ int main(){
                     printf("Ela apenas estava mantendo a entidade presa.\n");
                     delay(2);
 
-                    printf("\nVoce cumpriu sua missao, mas acabou libertando a entidade.\n");
-                    delay(2);
+                    printf("------- FINAL 5: Missao ou Libertacao ----------\n\n");
+                    printf("Voce matou Livia, e cumpriu sua missao\nMas, liberou um mal maior.\n\n");
+                    printf("------------------------------------------------\n\n");
 
-                    printf("%s\n", imprimirTracos());
+                    delay(5);
+
+                    printf("%s\n", imprimirCreditos());
 
                 } else if(decisao5 == 2){
 
@@ -1328,11 +1340,12 @@ int main(){
                     printf("\nVoce consegue sair da casa.\n");
                     delay(2);
 
-                    printf("%s\n", imprimirTracos());
 
-                    printf("\nFINAL - A MENINA\n");
-                    printf("Voce salvou Livia, mas desobedeceu a Ordem.\n");
-                    delay(2);
+                    printf("------------ FINAL 6: A Menina -------------------\n\n");
+                    printf("Voce vai contra a orientacao da ordem.\nMas, salvou Livia\n\n");
+                    printf("--------------------------------------------------\n\n");
+
+                    delay(5);
 
                     printf("%s\n", imprimirCreditos());
 
@@ -1356,11 +1369,11 @@ int main(){
                     printf("As luzes se apagam.\n");
                     delay(2);
 
-                    printf("%s\n", imprimirTracos());
+                    printf("------------ FINAL 7: Tarde Demais -------------------\n\n");
+                    printf("Voce esta paralizado, e a entidade te consome\n\n");
+                    printf("------------------------------------------------------\n\n");
 
-                    printf("\nFINAL - TARDE DEMAIS\n");
-                    printf("A entidade toma conta da casa e voce nao consegue impedir a manifestacao.\n");
-                    delay(2);
+                    delay(5);
 
                     printf("%s\n", imprimirCreditos());
 

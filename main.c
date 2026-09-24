@@ -18,6 +18,40 @@ char* imprimirCreditos(){
     char* creditos = "Esse trabalho foi realizado em conjunto por:\nAna Leticia\nCalebe\nDavi\nKeven\nMarcos\nSannayra\n\nObrigada pela atencao!";
     return creditos;
 }
+
+//Add inventario
+typedef struct inventario{
+    char* nomeObjeto;
+    int pontos;
+    struct inventario *prox;
+} inventario;
+	
+inventario *inicio = NULL;
+inventario *fim = NULL;
+int pontuacaoItens = 0;
+int tam = 0;
+	
+//Lista do inventario
+void addNovoItem (char* nomeObjeto, int pontos){
+	
+	inventario *novoItem = malloc(sizeof(inventario));
+    novoItem->nomeObjeto = nomeObjeto;
+    novoItem->pontos = pontos;
+    novoItem->prox = NULL;
+
+    if(inicio == NULL){
+        inicio = novoItem;
+        fim = novoItem;
+        pontuacaoItens = inicio->pontos;
+        tam++;
+    }else{
+        fim->prox = novoItem;
+        fim = novoItem;
+        pontuacaoItens += fim->pontos;
+        tam++;
+    }
+}
+
 typedef struct{
     char* nome;
     int dano;
@@ -424,15 +458,16 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
             delay(2);
             printf("Mas, ja nao ha mais tempo para arrependimentos.\n\n");
             delay(3);
-            printf("Voce esta morto, agente");
+            printf("Voce esta morto, agente\n");
             delay(3);
 
             printf("------------ FINAL 1: Morte Infeliz ------------\n\n");
             printf("Voce lutou ate o seu ultimo suspiro, mas nao foi suficiente\n\n");
             printf("------------------------------------------------\n\n");
+            printf("Pontuacao: %d\n", pontuacaoItens);
             delay(5);
 
-            printf("%s\n", imprimirCreditos());
+            printf("\n%s\n", imprimirCreditos());
             break;
 
         }
@@ -445,6 +480,7 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
             printf("-------------- FINAL 2: Loucura ---------------\n\n");
             printf("Voce enlouquece completamente, dando abertura para um golpe final.\n\n");
             printf("------------------------------------------------\n\n");
+            printf("Pontuacao: %d\n", pontuacaoItens);
             delay(5);
 
             printf("%s\n", imprimirCreditos());
@@ -480,36 +516,6 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
     return 0;
     }
     
-    //Add inventario
-    typedef struct inventario{
-    	char* nomeObjeto;
-    	int pontos;
-    	struct inventario *prox;
-	} inventario;
-	
-	inventario *inicio = NULL;
-	inventario *fim = NULL;
-	int tam = 0;
-	
-	//Lista do inventario
-	void addNovoItem (char* nomeObjeto, int pontos){
-    
-    inventario *novoItem = malloc(sizeof(inventario));
-    novoItem->nomeObjeto = nomeObjeto;
-    novoItem->pontos = pontos;
-    novoItem->prox = NULL;
-
-    if(inicio == NULL){
-        inicio = novoItem;
-        fim = novoItem;
-        tam++;
-    }else{
-        fim->prox  = novoItem;
-        fim = novoItem;
-        tam++;
-    }
-
-}
 
 int main(){
     srand(time(NULL));
@@ -549,7 +555,8 @@ int main(){
 
     delay(2);
     // INICIO DAS DECISOES: VER ITENS
-
+    
+	int pontuacaoTotal = 0;
     int decisao1 = 0;
 
     while(decisao1 != 6){
@@ -705,7 +712,10 @@ int main(){
             delay(2);
 
             printf("%s\n", imprimirTracos());
-
+			
+			addNovoItem("Mochila", 2);
+			addNovoItem("Documentos", 5);
+		
             int decisao2a = 0;
 
             // 1.1: LUTAR OU FUGIR
@@ -717,13 +727,14 @@ int main(){
 	            scanf("%d", &decisao2a);
 
 	            if(decisao2a == 1){
-	                // LUTAR COM O ZUMBI(incompleto)
+	                // LUTAR COM O ZUMBI
 	                decisao2 = batalha(&persona,&zumbisangue,1,decisao2);
 	                if(decisao2 != 3){
                         break;
 	                }
-						
-					addNovoItem ("")
+					
+					pontuacaoTotal += 5;
+					
 	                printf("\nDepois de uma longa e brutal batalha, voce permanece alguns segundos parado, tentando recuperar o folego.\n");
                     delay(2);
 
@@ -790,6 +801,7 @@ int main(){
                     printf("------------ FINAL 3: Morte Covarde ------------\n\n");
                     printf("Voce tentou fugir do zumbi de sangue, e ignorou sua missao\n\n");
                     printf("------------------------------------------------\n\n");
+                    printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
 
 	                delay(5);
 
@@ -1233,6 +1245,7 @@ int main(){
                     printf("------------ FINAL 4: O Erro -------------------\n\n");
                     printf("Voce tentou fugir do zumbi de sangue, e ignorou sua missao\n\n");
                     printf("------------------------------------------------\n\n");
+                    printf("Pontuacao: %d", pontuacaoTotal + pontuacaoItens);
 
                     delay(5);
 
@@ -1312,6 +1325,7 @@ int main(){
                     printf("------- FINAL 5: Missao ou Libertacao ----------\n\n");
                     printf("Voce matou Livia, e cumpriu sua missao\nMas, liberou um mal maior.\n\n");
                     printf("------------------------------------------------\n\n");
+                    printf("Pontuacao: %d", pontuacaoTotal + pontuacaoItens);
 
                     delay(5);
 
@@ -1357,6 +1371,7 @@ int main(){
                     printf("------------ FINAL 6: A Menina -------------------\n\n");
                     printf("Voce vai contra a orientacao da ordem.\nMas, salvou Livia\n\n");
                     printf("--------------------------------------------------\n\n");
+                    printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
 
                     delay(5);
 
@@ -1385,7 +1400,7 @@ int main(){
                     printf("------------ FINAL 7: Tarde Demais -------------------\n\n");
                     printf("Voce esta paralizado, e a entidade te consome\n\n");
                     printf("------------------------------------------------------\n\n");
-
+					printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
                     delay(5);
 
                     printf("%s\n", imprimirCreditos());

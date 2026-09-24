@@ -198,7 +198,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
                         }
                         else if(dado>=5 && dado<=6){
                             reduz_dano_ag = 7;
-                            printf("Voce conseguiu se esquivar bem da criatura embora ainda pareça ter se machucado muito levemente\n\n");
+                            printf("Voce conseguiu se esquivar bem da criatura embora ainda pareca ter se machucado muito levemente\n\n");
                         }
                         delay(3);
                         ataquemonstro(ag,mo,dano_bruto_ag = 0,num_luta,tatica,reduz_dano_ag);
@@ -240,6 +240,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
                             chance2++;
                             printf("Em meio a situacao desesperadora, por uma sorte milagrosa voce encontra uma espingarda de outro agente\n");
                             delay(3);
+                            addNovoItem ("Espingarda", 5);
                             dado = girar_teste();
                             dano_bruto_ag = dado + 10;
                             ag->sanidade -=  2;
@@ -479,18 +480,18 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
     return 0;
     }
     
-    //Add invent�rio
+    //Add inventario
     typedef struct inventario{
     	char* nomeObjeto;
     	int pontos;
-    	struct inventario * prox;
+    	struct inventario *prox;
 	} inventario;
 	
 	inventario *inicio = NULL;
 	inventario *fim = NULL;
 	int tam = 0;
 	
-	//Lista do invent�rio
+	//Lista do inventario
 	void addNovoItem (char* nomeObjeto, int pontos){
     
     inventario *novoItem = malloc(sizeof(inventario));
@@ -503,8 +504,8 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
         fim = novoItem;
         tam++;
     }else{
-        novoItem->prox = inicio;
-        inicio = novoItem;
+        fim->prox  = novoItem;
+        fim = novoItem;
         tam++;
     }
 
@@ -562,6 +563,12 @@ int main(){
         printf("\nEscolha: ");
 
         scanf("%d", &decisao1);
+        
+        addNovoItem ("ArmaIN", 0);
+        addNovoItem ("RadioIN", 0);
+        addNovoItem ("Simbolo da OrdemIN", 0);
+        addNovoItem ("FotografiaIN", 0);
+        addNovoItem ("LanternaIN", 0);
 
         if(decisao1 == 1){
             // ver arma
@@ -715,7 +722,8 @@ int main(){
 	                if(decisao2 != 3){
                         break;
 	                }
-
+						
+					addNovoItem ("")
 	                printf("\nDepois de uma longa e brutal batalha, voce permanece alguns segundos parado, tentando recuperar o folego.\n");
                     delay(2);
 
@@ -814,7 +822,8 @@ int main(){
             delay(2);
 			printf("Voce solta o medalhao e pega o papel, nele esta escrito: \"Ela nao nasceu assim\"\n");
             delay(2);
-
+			addNovoItem ("Medalhao", 4);
+			addNovoItem ("Papel Manchado", 4);
 			printf("%s\n", imprimirTracos());
 
 			int decisao2b = 0;
@@ -851,6 +860,8 @@ int main(){
                     delay(2);
 					printf("Junto do tecido ha um pequeno bilhete: \"Nao confie no que ela parece ser.\". \n");
                     delay(2);
+                    addNovoItem ("Parte do uniforme", 3);
+                    addNovoItem ("Bilhete", 4);
 
 					decisao2 = 3;
 					break;
@@ -877,7 +888,9 @@ int main(){
 					printf("Voce volta para a casa e decide entrar nela.\n\n");
 
 					printf("%s\n", imprimirTracos());
-
+					
+					addNovoItem ("Fotografia", 4);
+					
 					decisao2 = 3;
 					break;
 

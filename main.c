@@ -14,7 +14,22 @@ char* imprimirTracos(){
 }
 
 char* imprimirCreditos(){
-    char* creditos = "Esse trabalho foi realizado em conjunto por:\nAna Leticia\nCalebe\nDavi\nKeven\nMarcos\nSannayra\n\nObrigada pela atencao!";
+    static char creditos[512];
+    snprintf(creditos, sizeof(creditos),
+        "--------------------------------------------------------\n"
+        "                     CREDITOS DO JOGO\n"
+        "--------------------------------------------------------\n\n"
+        "   Esse trabalho foi realizado em conjunto por:\n\n"
+        "        * Ana Leticia - Desenvolvedora\n"
+        "        * Calebe - Direcao Criativa\n"
+        "        * Davi - Direcao Criativa\n"
+        "        * Keven - Desenvolvedor\n"
+        "        * Marcos - Desenvolvedor\n"
+        "        * Sannayra - Desenvolvedora\n\n"
+        "--------------------------------------------------------\n"
+        "                Obrigada pela atencao!\n"
+        "--------------------------------------------------------\n"
+    );
     return creditos;
 }
 

@@ -51,6 +51,37 @@ void addNovoItem (char* nomeObjeto, int pontos){
     }
 }
 
+//Lista os itens conquistados pelo jogador e a pontuacao atual
+void listarInventario(){
+    printf("\n----------------- INVENTARIO -----------------\n\n");
+    if(inicio == NULL){
+        printf("Nenhum item foi conquistado ate o momento.\n");
+    }else{
+        inventario *atual = inicio;
+        while(atual != NULL){
+            if(atual->pontos > 0){
+                printf("- %s (%d pontos)\n", atual->nomeObjeto, atual->pontos);
+            }
+            atual = atual->prox;
+        }
+    }
+    printf("Pontuacao de itens: %d\n", pontuacaoItens);
+    printf("\n------------------------------------------------\n");
+}
+
+//Retorna o conceito do jogador de acordo com a pontuacao final obtida
+char* obterConceito(int pontuacaoFinal){
+    if(pontuacaoFinal >= 20){
+        return "Excelente";
+    }else if(pontuacaoFinal >= 12){
+        return "Bom";
+    }else if(pontuacaoFinal >= 6){
+        return "Intermediario";
+    }else{
+        return "Ruim";
+    }
+}
+
 typedef struct{
     char* nome;
     int dano;
@@ -409,15 +440,15 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
     int pontuacao;
     while(mo->pv > 0){
         if(ag->pv > 0 && ag->sanidade > 0){
-            printf("\n\n========== AGENTE ==========\n");
+            printf("\n\n----------------- AGENTE -----------------\n");
             printf("PV: %d/%d | Sanidade: %d | Protecao: %d \n", ag->pv, ag->pv_total, ag->sanidade, ag->armadura);
             printf("ARMA: %s (Dano: %d)(Municao: %d)\n\n", ag->armas.nome, ag->armas.dano, ag->armas.municao);
 
-            printf("========== MONSTRO ==========\n");
+            printf("----------------- MONSTRO -----------------\n");
             printf("NOME: %s ", mo->nome);
             printf("PV: %d/%d | Resistencia a dano: %d\n\n", mo->pv, mo->pv_total, mo->resistencia_dano);
             delay(3);
-            printf("===== O QUE IRA FAZER? =====\n");
+            printf("----------------- O QUE QUER FAZER? -----------------\n");
             delay(1);
             printf("1 - Atirar\n");
             printf("2 - Procurar por algo ao redor que ajude\n");
@@ -462,12 +493,11 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
 
             printf("\n------------ FINAL 1: Morte Infeliz ------------\n\n");
             printf("Voce lutou ate o seu ultimo suspiro, mas nao foi suficiente\n\n");
-            printf("------------------------------------------------\n\n");
 
             printf("-------------- RELATORIO DO JOGO --------------\n\n");
             printf("Pontuacao: %d\n", pontuacaoItens);
-            printf("Imprimir iventario...\n");
-            printf("-----------------------------------------------\n\n");
+            printf("Conceito: %s\n", obterConceito(pontuacaoItens));
+            listarInventario();
             delay(6);
 
             printf("\n%s\n", imprimirCreditos());
@@ -482,12 +512,11 @@ int batalha(Agente *ag,Monstro *mo,int num_luta,int decisao){
 
             printf("\n\n-------------- FINAL 2: Loucura ---------------\n\n");
             printf("Voce enlouquece completamente, dando abertura para um golpe final.\n\n");
-            printf("------------------------------------------------\n\n");
             
             printf("-------------- RELATORIO DO JOGO --------------\n\n");
             printf("Pontuacao: %d\n", pontuacaoItens);
-            printf("Imprimir iventario...\n");
-            printf("-----------------------------------------------\n\n");
+            printf("Conceito: %s\n", obterConceito(pontuacaoItens));
+            listarInventario();
             delay(6);
 
             printf("%s\n", imprimirCreditos());
@@ -807,12 +836,11 @@ int main(){
 
                     printf("------------ FINAL 3: Morte Covarde ------------\n\n");
                     printf("Voce tentou fugir do zumbi de sangue, e ignorou sua missao\n\n");
-                    printf("------------------------------------------------\n\n");
 
                     printf("-------------- RELATORIO DO JOGO --------------\n\n");
                     printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
-                    printf("Imprimir iventario...\n");
-                    printf("-----------------------------------------------\n\n");
+                    printf("Conceito: %s\n", obterConceito(pontuacaoTotal + pontuacaoItens));
+                    listarInventario();
 
 	                delay(6);
 
@@ -1050,7 +1078,7 @@ int main(){
         				printf("Voce dispara a arma.\n");
                         delay(3);
         				printf("A garota desaparece e a casa comeca a tremer. Voce percebe que o tiro nao atingiu ela. \n");
-        				printf("Entao, escuta um barulho vindo do porao.");
+        				printf("Entao, escuta um barulho vindo do porao.\n");
                         delay(3);
                         printf("Voce sabe para onde deve ir agora.");
                         delay(4);
@@ -1256,12 +1284,11 @@ int main(){
 
                     printf("------------ FINAL 4: O Erro -------------------\n\n");
                     printf("Voce tentou fugir do zumbi de sangue, e ignorou sua missao\n\n");
-                    printf("------------------------------------------------\n\n");
 
                     printf("-------------- RELATORIO DO JOGO --------------\n\n");
                     printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
-                    printf("Imprimir iventario...\n");
-                    printf("-----------------------------------------------\n\n");
+                    printf("Conceito: %s\n", obterConceito(pontuacaoTotal + pontuacaoItens));
+                    listarInventario();
 
                     delay(6);
 
@@ -1340,12 +1367,11 @@ int main(){
 
                     printf("------- FINAL 5: Missao ou Libertacao ----------\n\n");
                     printf("Voce matou Livia, e cumpriu sua missao\nMas, liberou um mal maior.\n\n");
-                    printf("------------------------------------------------\n\n");
                     
                     printf("-------------- RELATORIO DO JOGO --------------\n\n");
                     printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
-                    printf("Imprimir iventario...\n");
-                    printf("-----------------------------------------------\n\n");
+                    printf("Conceito: %s\n", obterConceito(pontuacaoTotal + pontuacaoItens));
+                    listarInventario();
 
                     delay(6);
 
@@ -1390,12 +1416,11 @@ int main(){
 
                     printf("------------ FINAL 6: A Menina -------------------\n\n");
                     printf("Voce vai contra a orientacao da ordem.\nMas, salvou Livia\n\n");
-                    printf("--------------------------------------------------\n\n");
                     
                     printf("-------------- RELATORIO DO JOGO --------------\n\n");
                     printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
-                    printf("Imprimir iventario...\n");
-                    printf("-----------------------------------------------\n\n");
+                    printf("Conceito: %s\n", obterConceito(pontuacaoTotal + pontuacaoItens));
+                    listarInventario();
 
                     delay(6);
 
@@ -1423,12 +1448,11 @@ int main(){
 
                     printf("------------ FINAL 7: Tarde Demais -------------------\n\n");
                     printf("Voce esta paralizado, e a entidade te consome\n\n");
-                    printf("------------------------------------------------------\n\n");
 					
                     printf("-------------- RELATORIO DO JOGO --------------\n\n");
                     printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);
-                    printf("Imprimir iventario...\n");
-                    printf("-----------------------------------------------\n\n");
+                    printf("Conceito: %s\n", obterConceito(pontuacaoTotal + pontuacaoItens));
+                    listarInventario();
                     delay(6);
 
                     printf("%s\n", imprimirCreditos());

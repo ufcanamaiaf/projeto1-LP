@@ -209,7 +209,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
                 dano_bruto_ag = dado + ag->armas.dano;
                 delay(2);
 
-                if(dano_bruto_ag <= 8){
+                if(dado == 1){
                     if(mo->resistencia_dano > 0){
                         mo->pv -= 1;
                         mo->resistencia_dano -= dano_bruto_ag;
@@ -225,7 +225,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
                     ataquemonstro(ag,mo,dano_bruto_ag,num_luta,tatica,reduz_dano_ag = 0);
                 }
 
-                else if(dano_bruto_ag == 9 || dano_bruto_ag == 10){
+                else if(dado >= 2 || dano_bruto_ag <= 4){
                     if(mo->resistencia_dano > 0){
                         mo->pv -= 2;
                         mo->resistencia_dano -= dano_bruto_ag;
@@ -241,7 +241,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
                     ataquemonstro(ag,mo,dano_bruto_ag,num_luta,tatica,reduz_dano_ag = 0);
                 }
 
-                else if(dano_bruto_ag == 11 || dano_bruto_ag == 12){
+                else if(dado == 5 || dano_bruto_ag == 6){
                     if(mo->resistencia_dano > 0){
                         mo->pv -= 3;
                         mo->resistencia_dano -= dano_bruto_ag;
@@ -618,7 +618,7 @@ int main(){
     // INICIO DAS DECISOES: VER ITENS
 
 	int pontuacaoTotal = 0;
-    int decisao1;
+    int decisao1 = 0;
 
     while(decisao1 != 6){
 
@@ -1325,12 +1325,13 @@ int main(){
                         }
 
                     } else{
-                        printf("\nOpcao invalida. Escolha um valor entre 1 e 2");
+                        printf("\nOpcao invalida. Escolha um valor entre 1 e 2\n\n");
                     }
                 }
 
             if(decisao5 == 1){
                 // ENCONTRO FINAL
+                int decisao5a;
                 printf("\nLivia olha para voce por alguns segundos.\n");
                 delay(2);
 
@@ -1350,14 +1351,15 @@ int main(){
                 printf("Agora entende que sua missao nao sera tao simples quanto parecia.\n\n");
                 delay(3);
 
+                while (decisao5a < 1 || decisao5a> 3 ){
                 printf("1- Matar Livia.\n");
                 printf("2- Tentar salvar Livia.\n");
                 printf("3- Nao fazer nada.\n");
 
                 printf("\nEscolha: ");
-                decisao5 = validador(decisao5);
+                decisao5a = validador(decisao5a);
 
-                if(decisao5 == 1){
+                if(decisao5a == 1){
                     printf("\nVoce decide cumprir sua missao.\n");
                     delay(2);
 
@@ -1403,8 +1405,8 @@ int main(){
                     delay(6);
 
                     printf("%s\n", imprimirCreditos());
-
-                } else if(decisao5 == 2){
+                    break;
+                } else if(decisao5a == 2){
 
                     printf("\nVoce decide tentar salvar Livia.\n");
                     delay(3);
@@ -1452,8 +1454,8 @@ int main(){
                     delay(6);
 
                     printf("%s\n", imprimirCreditos());
-
-                } else if(decisao5 == 3){
+                    break;
+                } else if(decisao5a == 3){
 
                     printf("\nVoce fica parado, sem saber o que fazer.\n");
                     delay(3);
@@ -1483,11 +1485,12 @@ int main(){
                     delay(6);
 
                     printf("%s\n", imprimirCreditos());
-
+                    break;
                 } else {
 
                     printf("\nOpcao invalida. Escolha um valor entre 1 e 3.\n");
 
+                }
                 }
             }
         }

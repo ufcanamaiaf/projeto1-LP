@@ -4,7 +4,7 @@
 #include <time.h>
 
 void delay(int segundos){
-    sleep(0/*segundos*/);
+    sleep(segundos);
 }
 // nessa funcao, para colocar um intervalo de tempo em segundos entre a execucao de um texto/funcao e outro, como por exemplo 1 segundo, precisa escrever 'delay(1)'
 

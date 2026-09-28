@@ -1485,7 +1485,7 @@ int main(){
                     delay(3);
 
                     printf("------------ FINAL 7: Tarde Demais -------------------\n\n");
-                    printf("Voce esta paralizado, e a entidade te consome\n\n");
+                    printf("Voce esta paralisado, e a entidade te consome\n\n");
 
                     printf("-------------- RELATORIO DO JOGO --------------\n\n");
                     printf("Pontuacao: %d\n", pontuacaoTotal + pontuacaoItens);

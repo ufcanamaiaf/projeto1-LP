@@ -960,7 +960,9 @@ int main(){
                     delay(3);
 					printf("Perto da arvore tem uma pequena mesa de madeira.\n");
                     delay(3);
-                    printf("Ela parece estar la ha bastante tempo, esta velha e com a madeira rachada, em cima dela ha algumas velas velhas, alguns pedacos de vidro e uma velha fotografia.\n");
+                    printf("Ela parece estar la ha bastante tempo, esta velha e com a madeira rachada.\n");
+                    delay(3);
+                    printf("Em cima dela ha algumas velas velhas, alguns pedacos de vidro e uma velha fotografia.\n");
                     delay(3);
 					printf("Na fotografia, tem a menina da foto anterior, Livia.\n");
                     delay(3);

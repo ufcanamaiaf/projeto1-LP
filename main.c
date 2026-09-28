@@ -160,7 +160,7 @@ void ataquemonstro(Agente *ag, Monstro *mo, int dano_recebido, int num_luta, int
                 int dado_mo = girar_teste();
                 int dano_bruto_mo;
                 if(mo->pv <= 15){
-                    dano_bruto_mo  = dado_mo + (mo->dano + 3) - reduz_dano_ag;
+                    dano_bruto_mo  = dado_mo + (mo->dano + 2) - reduz_dano_ag;
                 }
                 else{
                     dano_bruto_mo = dado_mo + mo->dano - reduz_dano_ag;
@@ -169,9 +169,8 @@ void ataquemonstro(Agente *ag, Monstro *mo, int dano_recebido, int num_luta, int
                 if (dano_sofrido < 0){
                     dano_sofrido = 0;
                 }
-                ag->armadura--;
-                if(ag->armadura <= 0){
-                    ag->armadura == 0;
+                if(ag->armadura > 0){
+                    ag->armadura--;
                 }
                 ag->pv -= dano_sofrido;
 
@@ -196,9 +195,10 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
     int dado;
     int dano_rest;
     int reduz_dano_ag;
-    int chance2 = 0;
-    int chance = 0;
+    static int chance2;
+    static int chance;
     int cura = 0;
+    static int tentativ_cura;
 
     if(num_luta == 1){
         //ATIRAR
@@ -295,6 +295,7 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
                     }
 
                     else if(dado >= 3 && dado <= 5){
+                        addNovoItem ("arma branca", 5-chance);
                         if(chance <= 2){
                             chance++;
                             printf("Voce avanca para uma arma branca mais proxima, talvez isso possa ajudar ao menos a afastar a criatura\n\n");
@@ -379,53 +380,63 @@ void luta(Agente *ag, Monstro *mo, int tatica,int num_luta){
         }
         //TENTAR SE CURAR
         else if (tatica == 3){
-            if(ag->pv == ag->pv_total){
+            if(tentativ_cura != 5){
+                if(ag->pv == ag->pv_total){
                 printf("voce esta com vida cheia, nao precisa se curar :)");
+                }
+                else{
+                    tentativ_cura++;
+                    if(ag->pv >=19 && ag->pv <= 25){
+                        printf("seus recursos sao limitados mas voce tenta fazer um remendo rapido para algumas feridas superficiais no corpo");
+                    }
+                    else if(ag->pv >=10 && ag->pv <= 18){
+                        printf("seus recursos sao limitados mas voce tenta uma forma fazer um remendo improvisado para feridas menos superficiais");
+                    }
+                    else if(ag->pv >=1 && ag->pv <= 9){
+                        printf("seus recursos sao limitados mas voce tenta uma forma de fazer algo que estanque as feridas mais profundas");
+                    }
+                    delay(3);
+                    dado = girar_teste();
+
+                    if(dado >= 1 && dado <= 2){
+                        cura = 4;
+                        printf("voce faz um leve e rapido remendo para as pequenas feridas e logo volta a focar na batalha, voce recupera %d pontos de vida\n",cura);
+                        delay(3);
+                        printf("enquanto isso o monstro avanca mas voce esta preparado para esquivar\n\n");
+                        delay(2);
+                        reduz_dano_ag = 6;
+                    }
+
+                    if(dado >= 3 && dado <= 5){
+                        cura = 7;
+                        printf("voce faz um otimo remendo que pode estancar uma ferida, voce recupera %d pontos de vida\n",cura);
+                        delay(3);
+                        printf("enquanto isso o monstro avanca mas voce esta preparado para esquivar\n\n");
+                        delay(2);
+                        reduz_dano_ag = 5;
+                    }
+
+                    if(dado == 6){
+                        cura = 9;
+                        printf("voce faz um otimo remendo improvisado com poucas coisas usaveis ao seu redor, voce recupera %d pontos de vida\n", cura);
+                        delay(3);
+                        printf("enquanto isso o monstro , embora com dificuldade voce ainda consegue se esquivar\n\n");
+                        delay(2);
+                        reduz_dano_ag = 3;
+                    }
+                    ag->pv += cura;
+                    if(ag->pv>25){
+                        ag->pv = 25;
+                    }
+                    ataquemonstro(ag,mo,dano_bruto_ag = 0,num_luta,tatica,reduz_dano_ag);
+                    if(ag->pv > ag->pv_total){
+                        ag->pv == ag->pv_total;
+                    }
+                }
             }
             else{
-                if(ag->pv >=19 && ag->pv <= 25){
-                    printf("voce tenta fazer um remendo rapido para algumas feridas superficiais no corpo");
-                }
-                else if(ag->pv >=10 && ag->pv <= 18){
-                    printf("voce tenta uma forma fazer um remendo improvisado para feridas menos superficiais");
-                }
-                else if(ag->pv >=1 && ag->pv <= 9){
-                    printf("voce tenta uma forma de fazer algo que estanque as feridas mais profundas");
-                }
+                printf("voce nao encontra recursos por perto para ajudar em sua recuperacao, tera de continuar a luta do jeito que esta");
                 delay(3);
-                dado = girar_teste();
-
-                if(dado >= 1 && dado <= 2){
-                    cura = 4;
-                    printf("voce faz um leve e rapido remendo para as pequenas feridas e logo volta a focar na batalha, voce recupera %d pontos de vida\n",cura);
-                    delay(3);
-                    printf("enquanto isso o monstro avanca mas voce esta preparado para esquivar\n\n");
-                    delay(2);
-                    reduz_dano_ag = 6;
-                }
-
-                if(dado >= 3 && dado <= 5){
-                    cura = 7;
-                    printf("voce faz um otimo remendo que pode estancar uma ferida, voce recupera %d pontos de vida\n",cura);
-                    delay(3);
-                    printf("enquanto isso o monstro avanca mas voce esta preparado para esquivar\n\n");
-                    delay(2);
-                    reduz_dano_ag = 5;
-                }
-
-                if(dado == 6){
-                    cura = 9;
-                    printf("voce faz um otimo remendo improvisado com poucas coisas usaveis ao seu redor, voce recupera %d pontos de vida\n", cura);
-                    delay(3);
-                    printf("enquanto isso o monstro , embora com dificuldade voce ainda consegue se esquivar\n\n");
-                    delay(2);
-                    reduz_dano_ag = 3;
-                }
-                ag->pv += cura;
-                ataquemonstro(ag,mo,dano_bruto_ag = 0,num_luta,tatica,reduz_dano_ag);
-                if(ag->pv > ag->pv_total){
-                    ag->pv == ag->pv_total;
-                }
             }
         }
         else if (tatica == 4){// FUGIR
@@ -582,10 +593,6 @@ int main(){
     srand(time(NULL));
     // PV sao pontos de vida, para voce testar, caso precise passar pela rota da luta(quando abandona floresta) recomendo trocar a pontuacao de vida do zumbi para 1 antes da execucao "zumbisangue.pv = 1;"
     Agente persona;
-    persona.vigor = 2;
-    persona.forca = 2;
-    persona.agilidade = 3;
-    persona.intelecto = 2;
     persona.pv_total = 25;
     persona.pv = 25;
     persona.sanidade = 16;
